@@ -1,0 +1,2 @@
+JWT: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJWYXNrbyIsInRlc3RpbmciOiJTb21lIG90aGVyIGZpZWxkIn0.Dvf2cxYvdQfEUNZpsy0lr3FLBMxOaSsusN8o9Ezy6jI
+secret: secret

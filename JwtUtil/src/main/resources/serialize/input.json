@@ -1,0 +1,10 @@
+{
+  "header": {
+    "alg" : "HS256"
+  },
+  "payload": {
+    "sub": "Vasko",
+    "testing": "Some other field"
+  },
+  "secret": "secret"
+}
