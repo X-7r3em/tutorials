@@ -18,9 +18,11 @@ public class CompletableFutureExample {
             return 100L;
         });
 
-        while (!completableFuture.isDone()) {
-            System.out.println("CompletableFuture is not finished yet...");
-        }
+//        while (!completableFuture.isDone()) {
+//            System.out.println("CompletableFuture is not finished yet...");
+//        }
+
+        System.out.println("After cycle.");
 
         long result = completableFuture.get();
 
