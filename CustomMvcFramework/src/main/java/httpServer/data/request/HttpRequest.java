@@ -1,11 +1,15 @@
-package httpServer.data;
+package httpServer.data.request;
 
+import httpServer.data.Header;
+import httpServer.data.Parameter;
 import httpServer.data.cookies.Cookie;
 import httpServer.data.enumerations.HttpMethod;
 import httpServer.data.enumerations.HttpVersion;
 
+import javax.swing.*;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class HttpRequest {
     private HttpMethod method;
@@ -13,15 +17,18 @@ public class HttpRequest {
     private HttpVersion version;
     private List<Header> headers;
     private List<Cookie> cookies;
+    private String sessionId;
+    private Map<String, String> session;
     private List<Parameter> parameters;
 
-
-    public HttpRequest(HttpMethod method, String path, HttpVersion version, List<Header> headers, List<Cookie> cookies, List<Parameter> parameters) {
+    public HttpRequest(HttpMethod method, String path, HttpVersion version,
+                       List<Header> headers, List<Cookie> cookies, String sessionId, List<Parameter> parameters) {
         this.method = method;
         this.path = path;
         this.version = version;
         this.headers = headers;
         this.cookies = cookies;
+        this.sessionId = sessionId;
         this.parameters = parameters;
     }
 
@@ -65,11 +72,35 @@ public class HttpRequest {
         this.cookies = cookies;
     }
 
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public Map<String, String> getSession() {
+        return Collections.unmodifiableMap(session);
+    }
+
+    public void setSession(Map<String, String> session) {
+        this.session = session;
+    }
+
     public List<Parameter> getParameters() {
         return Collections.unmodifiableList(parameters);
     }
 
     public void setParameters(List<Parameter> parameters) {
         this.parameters = parameters;
+    }
+
+    public void addHeader(Header header) {
+        headers.add(header);
+    }
+
+    public void addCookie(Cookie cookie) {
+        cookies.add(cookie);
     }
 }

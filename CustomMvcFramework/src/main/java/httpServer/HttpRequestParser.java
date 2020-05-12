@@ -1,11 +1,11 @@
 package httpServer;
 
 import httpServer.data.Header;
-import httpServer.data.HttpRequest;
 import httpServer.data.Parameter;
 import httpServer.data.cookies.Cookie;
 import httpServer.data.enumerations.HttpMethod;
 import httpServer.data.enumerations.HttpVersion;
+import httpServer.data.request.HttpRequest;
 import httpServer.exceptions.HttpServerException;
 import org.apache.commons.text.StringEscapeUtils;
 
@@ -18,14 +18,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static util.Constants.CONTENT_LENGTH;
+import static util.Constants.*;
 
 public class HttpRequestParser {
-    public HttpRequestParser() {
-    }
-
     public HttpRequest parse(InputStream input) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
         String line = bufferedReader.readLine();
@@ -63,6 +61,11 @@ public class HttpRequestParser {
             }
         }
 
+        String sessionId = cookies.stream()
+                .filter(c -> c.getName().equalsIgnoreCase(SYS_SESSION))
+                .findFirst().orElseGet(() -> new Cookie(SYS_SESSION, null))
+                .getValue();
+
         char[] bodyParameters = new char[contentLength];
         List<Parameter> parameters = new ArrayList<>();
         if (contentLength > 0) {
@@ -71,7 +74,7 @@ public class HttpRequestParser {
             parameters = parseParameters(paramStr);
         }
 
-        return new HttpRequest(method, path, version, headers, cookies, parameters);
+        return new HttpRequest(method, path, version, headers, cookies, sessionId, parameters);
     }
 
     private List<Parameter> parseParameters(String parameters) {

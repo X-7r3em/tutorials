@@ -8,5 +8,6 @@ public class Constants {
     public static final String CONTENT_TYPE = "CONTENT-TYPE";
     public static final String TEXT_PLAIN = "text/plain";
     public static final String TEXT_HTML = "text/html";
-
+    public static final String SYS_SESSION = "SYS_SESSION";
+    public static final String ANONYMOUS = "Anonymous";
 }

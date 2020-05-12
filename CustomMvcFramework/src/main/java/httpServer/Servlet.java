@@ -1,23 +1,21 @@
 package httpServer;
 
 import MVCFramework.Route;
-import httpServer.data.Header;
-import httpServer.data.HttpRequest;
-import httpServer.data.HttpResponse;
-import httpServer.data.enumerations.HttpStatus;
-import httpServer.exceptions.HttpServerException;
+import httpServer.data.request.HttpRequest;
+import httpServer.data.response.ErrorResponse;
+import httpServer.data.response.HtmlResponse;
+import httpServer.data.response.HttpResponse;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static util.Constants.*;
+import static util.Constants.ANONYMOUS;
+import static util.Constants.NEW_LINE;
 
 public class Servlet extends Thread {
+    private static final Map<String, Map<String, String>> sessionData = new HashMap<>();
     private final Socket socket;
     private final List<Route> routeTable;
 
@@ -28,11 +26,21 @@ public class Servlet extends Thread {
 
     @Override
     public void run() {
-        BufferedWriter out = null;
         HttpResponse httpResponse = null;
         try {
             HttpRequestParser requestParser = new HttpRequestParser();
             HttpRequest httpRequest = requestParser.parse(socket.getInputStream());
+
+            String sessionId = null;
+            if (!sessionData.containsKey(httpRequest.getSessionId())) {
+                sessionId = UUID.randomUUID().toString();
+                Map<String, String> session = new HashMap<>();
+                session.put("Username", ANONYMOUS);
+                sessionData.put(sessionId, session);
+            }
+
+            httpRequest.setSessionId(sessionId);
+            httpRequest.setSession(sessionData.get(httpRequest.getSessionId()));
 
             Optional<Route> route = routeTable.stream()
                     .filter(r -> r.getPath().equals(httpRequest.getPath()) && r.getMethod() == httpRequest.getMethod())
@@ -41,39 +49,26 @@ public class Servlet extends Thread {
             if (route.isPresent()) {
                 httpResponse = route.get().getAction().apply(httpRequest);
             } else {
-                throw new HttpServerException("No such route!");
+                httpResponse = new HtmlResponse(null, "No such route!");
             }
 
-            out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8));
-            out.write(httpResponse.toString());
-
-            httpResponse.setContentType(TEXT_HTML);
-            switch (httpResponse.getContentType()) {
-                case TEXT_PLAIN:
-                case TEXT_HTML:
-                    out.write(new String(httpResponse.getBody(), StandardCharsets.UTF_8));
-                    break;
-            }
+            System.out.println(String.format("%s %s", httpRequest.getMethod(), httpRequest.getPath()));
         } catch (Exception ex) {
-            List<Header> headers = new ArrayList<>(Collections.singleton(new Header(CONTENT_TYPE, TEXT_PLAIN)));
-            httpResponse = new HttpResponse(HttpStatus.INTERNAL_SERVER_ERROR, headers, new ArrayList<>());
-            try {
-                out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8));
-                out.write(httpResponse.toString());
-                String stackTrace = Arrays.stream(ex.getStackTrace())
-                        .map(Object::toString)
-                        .collect(Collectors.joining("\r\n"));
-                out.write(stackTrace);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            String stackTrace = Arrays.stream(ex.getStackTrace())
+                    .map(Object::toString)
+                    .collect(Collectors.joining(NEW_LINE));
+            stackTrace += NEW_LINE + ex.getMessage() + NEW_LINE;
+            httpResponse = new ErrorResponse(stackTrace);
         } finally {
             try {
-                if (out != null) {
-                    out.close();
+                if (socket != null) {
+                    if (httpResponse != null) {
+                        socket.getOutputStream().write(httpResponse.getBytes());
+                    }
+                    socket.close();
                 }
-                socket.close();
-            } catch (IOException ignored) {
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         }
     }
