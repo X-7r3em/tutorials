@@ -1,8 +1,8 @@
 package MVCFramework;
 
+import httpServer.data.enumerations.HttpMethod;
 import httpServer.data.request.HttpRequest;
 import httpServer.data.response.HttpResponse;
-import httpServer.data.enumerations.HttpMethod;
 
 import java.util.function.Function;
 

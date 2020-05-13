@@ -14,6 +14,10 @@ public class ViewEngineImpl implements ViewEngine {
 
     @Override
     public String getHtml(String template, Object model) {
+        if (model == null) {
+            return template;
+        }
+
         if (isPrimitive(model)) {
             throw new IllegalArgumentException("Improper object passed as argument!");
         }
@@ -31,16 +35,16 @@ public class ViewEngineImpl implements ViewEngine {
                 e.printStackTrace();
             }
 
-            template = parseLoop(template, fieldName, fieldValue);
-            template = parseIf(template, fieldName, fieldValue);
             template = parseVariable(template, fieldName, fieldValue);
+            template = parseIf(template, fieldName, fieldValue);
+            template = parseLoop(template, fieldName, fieldValue);
         }
 
         return template;
     }
 
     private String parseVariable(String template, String fieldName, Object fieldValue) {
-        String fieldPattern = String.format("\\{\\{%s\\}\\}", fieldName);
+        String fieldPattern = String.format("(?<!if|foreach)\\{\\{%s\\}\\}", fieldName);
         return template.replaceAll(fieldPattern, fieldValue.toString());
     }
 

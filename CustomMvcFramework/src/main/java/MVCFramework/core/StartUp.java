@@ -1,22 +1,71 @@
 package MVCFramework.core;
 
 import MVCFramework.Route;
-import app.controller.ContactController;
-import app.controller.HomeController;
-import app.controller.StaticController;
+import MVCFramework.annotation.Controller;
+import MVCFramework.annotation.GetMapping;
+import MVCFramework.annotation.PostMapping;
+import MVCFramework.controller.AbstractController;
 import httpServer.data.enumerations.HttpMethod;
+import httpServer.data.request.HttpRequest;
+import httpServer.data.response.HttpResponse;
+import org.reflections.Reflections;
+import org.reflections.scanners.MethodAnnotationsScanner;
+import org.reflections.scanners.SubTypesScanner;
+import org.reflections.scanners.TypeAnnotationsScanner;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
 
 public class StartUp implements MvcApplication {
+
     @Override
     public void configure(List<Route> routeTable) {
-        routeTable.add(new Route("/", HttpMethod.GET, new HomeController()::index));
-        routeTable.add(new Route("/", HttpMethod.POST, new HomeController()::postIndex));
-        routeTable.add(new Route("/home", HttpMethod.GET, new HomeController()::home));
-        routeTable.add(new Route("/contact", HttpMethod.GET, new ContactController()::contact));
-        routeTable.add(new Route("/redirect", HttpMethod.GET, new HomeController()::redirect));
-        routeTable.add(new Route("/favicon.ico", HttpMethod.GET, new StaticController()::favicon));
+        Reflections reflections = new Reflections(
+                new ConfigurationBuilder()
+                        .setUrls(ClasspathHelper.forPackage(""))
+                        .setScanners(new SubTypesScanner(),
+                                new TypeAnnotationsScanner(),
+                                new MethodAnnotationsScanner())
+        );
+
+        Set<Class<?>> controllers = reflections.getTypesAnnotatedWith(Controller.class);
+
+        for (Class<?> controllerClass : controllers) {
+            for (Method method : controllerClass.getMethods()) {
+                Route route = null;
+                if (method.isAnnotationPresent(GetMapping.class)) {
+                    String path = method.getAnnotation(GetMapping.class).value();
+                    route = new Route(path, HttpMethod.GET, this.action(method, controllerClass));
+                    routeTable.add(route);
+                } else if (method.isAnnotationPresent(PostMapping.class)) {
+                    String path = method.getAnnotation(PostMapping.class).value();
+                    route = new Route(path, HttpMethod.POST, this.action(method, controllerClass));
+                    routeTable.add(route);
+                }
+            }
+        }
+    }
+
+    private Function<HttpRequest, HttpResponse> action(Method method, Class<?> controllerClass) {
+        return (httpRequest) -> {
+            HttpResponse httpResponse = null;
+            try {
+                AbstractController controller = (AbstractController) controllerClass.getConstructor().newInstance();
+                httpResponse = (HttpResponse) method.invoke(controller, httpRequest);
+            } catch (IllegalAccessException
+                    | InvocationTargetException
+                    | NoSuchMethodException
+                    | InstantiationException e) {
+                e.printStackTrace();
+            }
+
+            return httpResponse;
+        };
     }
 
     @Override

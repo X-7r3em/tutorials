@@ -1,10 +1,14 @@
 package app.controller;
 
-import MVCFramework.controller.Controller;
+import MVCFramework.annotation.GetMapping;
+import MVCFramework.annotation.Controller;
+import MVCFramework.controller.AbstractController;
 import httpServer.data.request.HttpRequest;
 import httpServer.data.response.HttpResponse;
 
-public class ContactController extends Controller {
+@Controller
+public class ContactController extends AbstractController {
+    @GetMapping("/contact")
     public HttpResponse contact(HttpRequest httpRequest) {
         return view("contact");
     }
