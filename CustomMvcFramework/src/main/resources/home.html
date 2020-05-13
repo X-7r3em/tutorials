@@ -9,11 +9,18 @@
 </head>
 <body>
 This is home.
-{{name}}
-{{value}}
 
-foreach{{num : numbers}}
-num
-{{foreach}}
+<ul>
+    foreach{{num : numbers}}
+    <li>
+        Number: {{num}}
+        if{{isTrue}}
+            {{name}} is true
+        {{if}}
+    </li>
+    {{foreach}}
+
+
+</ul>
 </body>
 </html>
