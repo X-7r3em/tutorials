@@ -5,16 +5,15 @@ import MVCFramework.annotation.GetMapping;
 import MVCFramework.annotation.PostMapping;
 import MVCFramework.controller.AbstractController;
 import app.service.UserService;
-import app.service.UserServiceImpl;
 import httpServer.data.response.HttpResponse;
 import httpServer.data.response.RedirectResponse;
 
 @Controller
 public class UsersController extends AbstractController {
-    private UserService userService;
+    private final UserService userService;
 
-    public UsersController() {
-        this.userService = new UserServiceImpl();
+    public UsersController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/users/register")
