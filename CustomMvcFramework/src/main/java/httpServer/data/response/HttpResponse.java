@@ -1,7 +1,6 @@
 package httpServer.data.response;
 
 import httpServer.data.Header;
-import httpServer.data.cookies.Cookie;
 import httpServer.data.cookies.ResponseCookie;
 import httpServer.data.enumerations.HttpStatus;
 import httpServer.data.enumerations.HttpVersion;
@@ -20,11 +19,13 @@ public class HttpResponse {
     private List<Header> headers;
     private List<ResponseCookie> cookies;
     private String sessionId;
+    private boolean hasSession;
     private byte[] body;
 
     protected HttpResponse(HttpStatus httpStatus, List<Header> headers, List<ResponseCookie> cookies,
-                           String sessionId, byte[] body) {
+                           String sessionId, boolean hasSession, byte[] body) {
         this.sessionId = sessionId;
+        this.hasSession = hasSession;
         this.version = HttpVersion.HTTP10;
         this.httpStatus = httpStatus;
         this.headers = headers;
@@ -33,11 +34,11 @@ public class HttpResponse {
     }
 
     protected HttpResponse() {
-        this(HttpStatus.OK, new ArrayList<>(), new ArrayList<>(), null, new byte[0]);
+        this(HttpStatus.OK, new ArrayList<>(), new ArrayList<>(), null, true, new byte[0]);
     }
 
     protected HttpResponse(HttpStatus httpStatus, List<Header> headers, List<ResponseCookie> cookies, String sessionId, String body) {
-        this(httpStatus, headers, cookies, sessionId, body.getBytes(StandardCharsets.UTF_8));
+        this(httpStatus, headers, cookies, sessionId, true, body.getBytes(StandardCharsets.UTF_8));
     }
 
     protected HttpResponse(String body) {
@@ -49,11 +50,11 @@ public class HttpResponse {
     }
 
     protected HttpResponse(byte[] body) {
-        this(HttpStatus.OK, new ArrayList<>(), new ArrayList<>(), null, body);
+        this(HttpStatus.OK, new ArrayList<>(), new ArrayList<>(), null, true, body);
     }
 
     protected HttpResponse(String sessionId, byte[] body) {
-        this(HttpStatus.OK, new ArrayList<>(), new ArrayList<>(), sessionId, body);
+        this(HttpStatus.OK, new ArrayList<>(), new ArrayList<>(), sessionId, true, body);
     }
 
     protected HttpResponse(HttpStatus status, String body) {
@@ -96,6 +97,22 @@ public class HttpResponse {
         this.cookies = cookies;
     }
 
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public boolean hasSession() {
+        return hasSession;
+    }
+
+    public void setSession(boolean hasSession) {
+        this.hasSession = hasSession;
+    }
+
     public byte[] getBody() {
         return body;
     }
@@ -129,7 +146,8 @@ public class HttpResponse {
                 .append(httpStatus.getMessage()).append(NEW_LINE);
 
         headers.forEach(h -> response.append(h).append(NEW_LINE));
-        if (sessionId != null) {
+
+        if (!hasSession) {
             cookies.add(new ResponseCookie(SYS_SESSION, sessionId));
         }
 

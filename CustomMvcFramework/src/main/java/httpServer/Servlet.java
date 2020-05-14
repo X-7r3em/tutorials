@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static util.Constants.ANONYMOUS;
 import static util.Constants.NEW_LINE;
@@ -32,15 +31,15 @@ public class Servlet extends Thread {
             HttpRequestParser requestParser = new HttpRequestParser();
             HttpRequest httpRequest = requestParser.parse(socket.getInputStream());
 
-            String sessionId = null;
             if (!sessionData.containsKey(httpRequest.getSessionId())) {
-                sessionId = UUID.randomUUID().toString();
+                String sessionId = UUID.randomUUID().toString();
                 Map<String, String> session = new HashMap<>();
-                session.put("Username", ANONYMOUS);
+                session.put("username", ANONYMOUS);
                 sessionData.put(sessionId, session);
+                httpRequest.setSessionId(sessionId);
+                httpRequest.setSession(false);
             }
 
-            httpRequest.setSessionId(sessionId);
             httpRequest.setSession(sessionData.get(httpRequest.getSessionId()));
 
             Optional<Route> route = routeTable.stream()

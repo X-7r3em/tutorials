@@ -26,7 +26,7 @@ public class WebHost {
     }
 
     private static void autoRegisterRoutes(List<Route> routeTable) {
-        String rootPath = "src\\main\\resources";
+        String rootPath = "src\\main\\resources\\static";
         File file = new File(rootPath);
         Queue<File> files = new ArrayDeque<>();
 
@@ -54,7 +54,7 @@ public class WebHost {
         switch (extension) {
             case "txt":
                 extension = "text/plain";
-            case "css":
+            case "static/css":
                 extension = "text/css";
                 break;
             case "html":

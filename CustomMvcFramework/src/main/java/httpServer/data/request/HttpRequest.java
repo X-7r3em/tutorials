@@ -6,7 +6,6 @@ import httpServer.data.cookies.Cookie;
 import httpServer.data.enumerations.HttpMethod;
 import httpServer.data.enumerations.HttpVersion;
 
-import javax.swing.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -18,17 +17,19 @@ public class HttpRequest {
     private List<Header> headers;
     private List<Cookie> cookies;
     private String sessionId;
+    private boolean hasSession;
     private Map<String, String> session;
     private List<Parameter> parameters;
 
     public HttpRequest(HttpMethod method, String path, HttpVersion version,
-                       List<Header> headers, List<Cookie> cookies, String sessionId, List<Parameter> parameters) {
+                       List<Header> headers, List<Cookie> cookies, String sessionId, boolean hasSession, List<Parameter> parameters) {
         this.method = method;
         this.path = path;
         this.version = version;
         this.headers = headers;
         this.cookies = cookies;
         this.sessionId = sessionId;
+        this.hasSession = hasSession;
         this.parameters = parameters;
     }
 
@@ -80,6 +81,14 @@ public class HttpRequest {
         this.sessionId = sessionId;
     }
 
+    public boolean hasSession() {
+        return hasSession;
+    }
+
+    public void setSession(boolean hasSession) {
+        this.hasSession = hasSession;
+    }
+
     public Map<String, String> getSession() {
         return Collections.unmodifiableMap(session);
     }
@@ -102,5 +111,13 @@ public class HttpRequest {
 
     public void addCookie(Cookie cookie) {
         cookies.add(cookie);
+    }
+
+    public void addSessionRecord(String name, String value) {
+        this.session.put(name, value);
+    }
+
+    public void removeSessionRecord(String name) {
+        this.session.remove(name);
     }
 }

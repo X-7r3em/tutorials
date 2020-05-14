@@ -44,8 +44,9 @@ public class ViewEngineImpl implements ViewEngine {
     }
 
     private String parseVariable(String template, String fieldName, Object fieldValue) {
+
         String fieldPattern = String.format("(?<!if|foreach)\\{\\{%s\\}\\}", fieldName);
-        return template.replaceAll(fieldPattern, fieldValue.toString());
+        return template.replaceAll(fieldPattern, fieldValue != null ? fieldValue.toString() : "null");
     }
 
     private String parseIf(String template, String fieldName, Object fieldValue) {

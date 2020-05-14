@@ -18,7 +18,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static util.Constants.*;
@@ -74,7 +73,7 @@ public class HttpRequestParser {
             parameters = parseParameters(paramStr);
         }
 
-        return new HttpRequest(method, path, version, headers, cookies, sessionId, parameters);
+        return new HttpRequest(method, path, version, headers, cookies, sessionId, true, parameters);
     }
 
     private List<Parameter> parseParameters(String parameters) {

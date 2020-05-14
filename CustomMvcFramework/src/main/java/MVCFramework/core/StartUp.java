@@ -37,14 +37,13 @@ public class StartUp implements MvcApplication {
 
         for (Class<?> controllerClass : controllers) {
             for (Method method : controllerClass.getMethods()) {
-                Route route = null;
                 if (method.isAnnotationPresent(GetMapping.class)) {
                     String path = method.getAnnotation(GetMapping.class).value();
-                    route = new Route(path, HttpMethod.GET, this.action(method, controllerClass));
+                    Route route = new Route(path, HttpMethod.GET, this.action(method, controllerClass));
                     routeTable.add(route);
                 } else if (method.isAnnotationPresent(PostMapping.class)) {
                     String path = method.getAnnotation(PostMapping.class).value();
-                    route = new Route(path, HttpMethod.POST, this.action(method, controllerClass));
+                    Route route = new Route(path, HttpMethod.POST, this.action(method, controllerClass));
                     routeTable.add(route);
                 }
             }
@@ -55,8 +54,11 @@ public class StartUp implements MvcApplication {
         return (httpRequest) -> {
             HttpResponse httpResponse = null;
             try {
-                AbstractController controller = (AbstractController) controllerClass.getConstructor().newInstance();
-                httpResponse = (HttpResponse) method.invoke(controller, httpRequest);
+                AbstractController controller = (AbstractController) controllerClass
+                        .getConstructor()
+                        .newInstance();
+                controller.setHttpRequest(httpRequest);
+                httpResponse = (HttpResponse) method.invoke(controller);
             } catch (IllegalAccessException
                     | InvocationTargetException
                     | NoSuchMethodException
