@@ -22,16 +22,7 @@ public class UsersController extends AbstractController {
     }
 
     @PostMapping("/users/register")
-    public HttpResponse doRegister() {
-        String username = getHttpRequest().getParameters()
-                .stream().filter(p -> p.getName().equals("username"))
-                .findFirst().get().getValue();
-        String password = getHttpRequest().getParameters()
-                .stream().filter(p -> p.getName().equals("password"))
-                .findFirst().get().getValue();
-        String email = getHttpRequest().getParameters()
-                .stream().filter(p -> p.getName().equals("email"))
-                .findFirst().get().getValue();
+    public HttpResponse doRegister(String username, String password, String email) {
         userService.createUser(username, email, password);
         this.signIn(userService.getUser(username, password), username);
         return new RedirectResponse("/users/login");
@@ -43,13 +34,7 @@ public class UsersController extends AbstractController {
     }
 
     @PostMapping("/users/login")
-    public HttpResponse doLogin() {
-        String username = getHttpRequest().getParameters()
-                .stream().filter(p -> p.getName().equals("username"))
-                .findFirst().get().getValue();
-        String password = getHttpRequest().getParameters()
-                .stream().filter(p -> p.getName().equals("password"))
-                .findFirst().get().getValue();
+    public HttpResponse doLogin(String username, String password) {
         this.signIn(userService.getUser(username, password), username);
         return new RedirectResponse("/");
     }

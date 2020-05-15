@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.*;
 import java.util.function.Function;
 
@@ -72,7 +73,23 @@ public class WebHost {
             try {
                 AbstractController controller = (AbstractController) serviceCollection.createInstance(controllerClass);
                 controller.setHttpRequest(httpRequest);
-                httpResponse = (HttpResponse) method.invoke(controller);
+
+                List<Object> parameterValues = new ArrayList<>();
+                Parameter[] methodParameters = method.getParameters();
+                for (Parameter methodParameter : methodParameters) {
+                    String parameterName = methodParameter.getName();
+                    String value = getParameter(httpRequest.getQueryParameters(), parameterName);
+
+                    if (value == null) {
+                        value = getParameter(httpRequest.getBodyParameters(), parameterName);
+                    }
+
+                    if (value != null) {
+                        parameterValues.add(cast(value, methodParameter.getType()));
+                    }
+                }
+
+                httpResponse = (HttpResponse) method.invoke(controller, parameterValues.toArray());
             } catch (IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
@@ -80,6 +97,19 @@ public class WebHost {
             return httpResponse;
         };
     }
+
+    public static <T> T cast(Object o, Class<T> clazz) {
+        return clazz.isInstance(o) ? clazz.cast(o) : null;
+    }
+
+    private static String getParameter(List<httpServer.data.Parameter> parameters, String parameterName) {
+        Optional<httpServer.data.Parameter> currentParameter = parameters
+                .stream()
+                .filter(p -> p.getName().equals(parameterName))
+                .findFirst();
+        return currentParameter.map(httpServer.data.Parameter::getValue).orElse(null);
+    }
+
 
     private static void autoRegisterStaticRoutes(List<Route> routeTable) {
         String rootPath = "src\\main\\resources\\static";

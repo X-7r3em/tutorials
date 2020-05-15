@@ -8,11 +8,6 @@
     <artifactId>CustomMvcFramework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
         <dependency>
@@ -26,4 +21,20 @@
             <version>0.9.12</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>11</release>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

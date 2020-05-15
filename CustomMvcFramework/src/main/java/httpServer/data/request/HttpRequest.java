@@ -19,10 +19,12 @@ public class HttpRequest {
     private String sessionId;
     private boolean hasSession;
     private Map<String, String> session;
-    private List<Parameter> parameters;
+    private List<Parameter> bodyParameters;
+    private List<Parameter> queryParameters;
 
     public HttpRequest(HttpMethod method, String path, HttpVersion version,
-                       List<Header> headers, List<Cookie> cookies, String sessionId, boolean hasSession, List<Parameter> parameters) {
+                       List<Header> headers, List<Cookie> cookies, String sessionId, boolean hasSession,
+                       List<Parameter> bodyParameters, List<Parameter> queryParameters) {
         this.method = method;
         this.path = path;
         this.version = version;
@@ -30,7 +32,8 @@ public class HttpRequest {
         this.cookies = cookies;
         this.sessionId = sessionId;
         this.hasSession = hasSession;
-        this.parameters = parameters;
+        this.bodyParameters = bodyParameters;
+        this.queryParameters = queryParameters;
     }
 
     public HttpMethod getMethod() {
@@ -97,12 +100,21 @@ public class HttpRequest {
         this.session = session;
     }
 
-    public List<Parameter> getParameters() {
-        return Collections.unmodifiableList(parameters);
+
+    public List<Parameter> getBodyParameters() {
+        return Collections.unmodifiableList(bodyParameters);
     }
 
-    public void setParameters(List<Parameter> parameters) {
-        this.parameters = parameters;
+    public void setBodyParameters(List<Parameter> bodyParameters) {
+        this.bodyParameters = bodyParameters;
+    }
+
+    public List<Parameter> getQueryParameters() {
+        return Collections.unmodifiableList(queryParameters);
+    }
+
+    public void setQueryParameters(List<Parameter> queryParameters) {
+        this.queryParameters = queryParameters;
     }
 
     public void addHeader(Header header) {

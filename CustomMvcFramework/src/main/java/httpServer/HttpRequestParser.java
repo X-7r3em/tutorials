@@ -32,7 +32,17 @@ public class HttpRequestParser {
         }
 
         String methodStr = responseTokens[0];
-        String path = responseTokens[1];
+        String pathAndQueryString = responseTokens[1];
+        String path = "";
+        String queryParametersText = "";
+        if (pathAndQueryString.contains("?")) {
+           String[] pathAndQueryStringTokens = pathAndQueryString.split("\\?", 2);
+           path = pathAndQueryStringTokens[0];
+           queryParametersText = pathAndQueryStringTokens[1];
+        } else {
+            path = pathAndQueryString;
+        }
+
         String protocolVersionStr = responseTokens[2];
         HttpMethod method = HttpMethod.valueOf(methodStr.toUpperCase());
         HttpVersion version = parseHttpVersion(protocolVersionStr);
@@ -65,20 +75,23 @@ public class HttpRequestParser {
                 .findFirst().orElseGet(() -> new Cookie(SYS_SESSION, null))
                 .getValue();
 
-        char[] bodyParameters = new char[contentLength];
-        List<Parameter> parameters = new ArrayList<>();
+        char[] bodyParametersBuffer = new char[contentLength];
+        List<Parameter> bodyParameters = new ArrayList<>();
         if (contentLength > 0) {
-            bufferedReader.read(bodyParameters, 0, contentLength);
-            String paramStr = URLDecoder.decode(new String(bodyParameters), StandardCharsets.UTF_8);
-            parameters = parseParameters(paramStr);
+            bufferedReader.read(bodyParametersBuffer, 0, contentLength);
+            String paramStr = URLDecoder.decode(new String(bodyParametersBuffer), StandardCharsets.UTF_8);
+            bodyParameters = parseParameters(paramStr);
         }
 
-        return new HttpRequest(method, path, version, headers, cookies, sessionId, true, parameters);
+        List<Parameter> queryParameters = parseParameters(queryParametersText);
+
+        return new HttpRequest(method, path, version, headers, cookies, sessionId, true, bodyParameters, queryParameters);
     }
 
     private List<Parameter> parseParameters(String parameters) {
         String escapedParameters = StringEscapeUtils.unescapeHtml4(parameters);
         return Arrays.stream(escapedParameters.split("&"))
+                .filter(s -> !s.isEmpty())
                 .map(p -> {
                     String[] parameterTokens = p.split("=", 2);
                     return new Parameter(parameterTokens[0], parameterTokens[1]);
