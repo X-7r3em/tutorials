@@ -25,6 +25,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static util.Constants.PORT;
 
@@ -77,15 +78,33 @@ public class WebHost {
                 List<Object> parameterValues = new ArrayList<>();
                 Parameter[] methodParameters = method.getParameters();
                 for (Parameter methodParameter : methodParameters) {
-                    String parameterName = methodParameter.getName();
-                    String value = getParameter(httpRequest.getQueryParameters(), parameterName);
+                    if (methodParameter.getType().getName().equals("java.lang.String")) {
+                        String parameterName = methodParameter.getName();
+                        String value = getValue(httpRequest, parameterName);
 
-                    if (value == null) {
-                        value = getParameter(httpRequest.getBodyParameters(), parameterName);
-                    }
+                        if (value != null) {
+                            parameterValues.add(cast(value, methodParameter.getType()));
+                        }
+                    } else {
+                        try {
+                            Object bindingModel = methodParameter.getType().getConstructor().newInstance();
+                            List<Method> bindingModelMethods = Arrays.stream(bindingModel.getClass()
+                                    .getDeclaredMethods())
+                                    .filter(m -> m.getName().startsWith("set"))
+                                    .collect(Collectors.toList());
+                            for (Method bingingModelMethod : bindingModelMethods) {
+                                String parameterName = bingingModelMethod.getName().substring(3);
+                                parameterName = parameterName.substring(0, 1).toLowerCase() + parameterName.substring(1);
+                                String value = getValue(httpRequest, parameterName);
+                                if (value != null) {
+                                    bingingModelMethod.invoke(bindingModel, value);
+                                }
+                            }
 
-                    if (value != null) {
-                        parameterValues.add(cast(value, methodParameter.getType()));
+                            parameterValues.add(bindingModel);
+                        } catch (InstantiationException | NoSuchMethodException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 
@@ -100,6 +119,16 @@ public class WebHost {
 
     public static <T> T cast(Object o, Class<T> clazz) {
         return clazz.isInstance(o) ? clazz.cast(o) : null;
+    }
+
+    private static String getValue(HttpRequest httpRequest, String parameterName) {
+        String value = getParameter(httpRequest.getQueryParameters(), parameterName);
+
+        if (value == null) {
+            value = getParameter(httpRequest.getBodyParameters(), parameterName);
+        }
+
+        return value;
     }
 
     private static String getParameter(List<httpServer.data.Parameter> parameters, String parameterName) {

@@ -4,6 +4,7 @@ import MVCFramework.annotation.Controller;
 import MVCFramework.annotation.GetMapping;
 import MVCFramework.annotation.PostMapping;
 import MVCFramework.controller.AbstractController;
+import app.model.RegisterModel;
 import app.service.UserService;
 import httpServer.data.response.HttpResponse;
 import httpServer.data.response.RedirectResponse;
@@ -22,9 +23,9 @@ public class UsersController extends AbstractController {
     }
 
     @PostMapping("/users/register")
-    public HttpResponse doRegister(String username, String password, String email) {
-        userService.createUser(username, email, password);
-        this.signIn(userService.getUser(username, password), username);
+    public HttpResponse doRegister(RegisterModel model) {
+        userService.createUser(model.getUsername(), model.getEmail(), model.getPassword());
+        this.signIn(userService.getUser(model.getUsername(), model.getPassword()), model.getUsername());
         return new RedirectResponse("/users/login");
     }
 
