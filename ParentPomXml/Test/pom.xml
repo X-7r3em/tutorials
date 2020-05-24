@@ -4,22 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>EmployeeConsumer</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>Eureeka</artifactId>
+        <artifactId>TestParent</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
 
-    <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-
-    </dependencies>
+    <artifactId>TestChild</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
 </project>
