@@ -27,15 +27,18 @@ public class ConsumerControllerClient {
         String baseUrl = serviceInstance.getUri().toString();
         baseUrl += "/employee";
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = null;
-        try {
-            response = restTemplate.exchange(baseUrl,
-                    HttpMethod.GET, getHeaders(), String.class);
-        } catch (Exception ex) {
-            System.out.println(ex);
+        for (int i = 0; i < 10; i++) {
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<String> response = null;
+            try {
+                response = restTemplate.exchange(baseUrl,
+                        HttpMethod.GET, getHeaders(), String.class);
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+
+            System.out.println(response.getBody());
         }
-        System.out.println(response.getBody());
     }
 
     private static HttpEntity<?> getHeaders() throws IOException {
