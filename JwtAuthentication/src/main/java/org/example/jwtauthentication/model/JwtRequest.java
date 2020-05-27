@@ -1,4 +1,4 @@
-package org.example.app.model;
+package org.example.jwtauthentication.model;
 
 public class JwtRequest {
 

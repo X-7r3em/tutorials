@@ -1,9 +1,9 @@
-package org.example.app.controller;
+package org.example.jwtauthentication.controller;
 
-import org.example.app.config.JwtTokenUtil;
-import org.example.app.model.JwtRequest;
-import org.example.app.model.JwtResponse;
-import org.example.app.service.JwtUserDetailsService;
+import org.example.jwtauthentication.config.JwtTokenUtil;
+import org.example.jwtauthentication.model.JwtRequest;
+import org.example.jwtauthentication.model.JwtResponse;
+import org.example.jwtauthentication.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

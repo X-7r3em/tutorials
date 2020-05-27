@@ -1,4 +1,4 @@
-package org.example.app;
+package org.example.jwtauthentication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

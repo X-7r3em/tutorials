@@ -1,4 +1,4 @@
-package org.example.app.service;
+package org.example.jwtauthentication.service;
 
 import java.util.ArrayList;
 

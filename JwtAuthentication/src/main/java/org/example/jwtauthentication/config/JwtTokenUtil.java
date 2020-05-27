@@ -1,4 +1,4 @@
-package org.example.app.config;
+package org.example.jwtauthentication.config;
 
 import java.util.Date;
 import java.util.HashMap;
