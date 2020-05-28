@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zuul-proxy-server</artifactId>
+    <artifactId>zuulproxyserver</artifactId>
 
     <dependencies>
         <dependency>
