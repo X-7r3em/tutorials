@@ -2,25 +2,14 @@ package app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestClientException;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-import java.io.IOException;
-
+@EnableDiscoveryClient
 @SpringBootApplication
 public class EmployeeConsumerApp {
-    public static void main(String[] args) throws RestClientException, IOException {
-        ApplicationContext ctx = SpringApplication.run(
-                EmployeeConsumerApp.class, args);
+    public static void main(String[] args) {
 
-        ConsumerControllerClient consumerControllerClient = ctx.getBean(ConsumerControllerClient.class);
-        System.out.println(consumerControllerClient);
-        consumerControllerClient.getEmployee();
-    }
+        SpringApplication.run(EmployeeConsumerApp.class, args);
 
-    @Bean
-    public ConsumerControllerClient consumerControllerClient() {
-        return new ConsumerControllerClient();
     }
 }
