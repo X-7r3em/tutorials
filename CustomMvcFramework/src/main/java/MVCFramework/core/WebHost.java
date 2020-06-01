@@ -77,30 +77,30 @@ public class WebHost {
         String contentType = "";
         switch (extension) {
             case "txt":
-                extension = "text/plain";
+                contentType = "text/plain";
             case "static/css":
-                extension = "text/css";
+                contentType = "text/css";
                 break;
             case "html":
-                extension = "text/html";
+                contentType = "text/html";
                 break;
             case "js":
-                extension = "text/javascript";
+                contentType = "text/javascript";
                 break;
             case "ico":
-                extension = "image/x-icon";
+                contentType = "image/x-icon";
                 break;
             case "jpg":
             case "jpeg":
-                extension = "image/jpeg";
+                contentType = "image/jpeg";
                 break;
             case "png":
-                extension = "image/png";
+                contentType = "image/png";
                 break;
             case "gif":
                 break;
             default:
-                extension = "text/plain";
+                contentType = "text/plain";
         }
 
 
@@ -112,7 +112,8 @@ public class WebHost {
             e.printStackTrace();
         }
 
-        Function<HttpRequest, HttpResponse> action = httpRequest -> new FileResponse(contentType, null, currentBody);
+        String finalContentType = contentType;
+        Function<HttpRequest, HttpResponse> action = httpRequest -> new FileResponse(finalContentType, null, currentBody);
         Route route = new Route(currentPath, HttpMethod.GET, action);
         routeTable.add(route);
     }
