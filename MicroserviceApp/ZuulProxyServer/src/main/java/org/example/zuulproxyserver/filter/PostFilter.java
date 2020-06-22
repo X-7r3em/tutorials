@@ -5,20 +5,19 @@ import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.springframework.stereotype.Component;
 
-import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_DECORATION_FILTER_ORDER;
-import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_TYPE;
+import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.*;
 
 @Component
-public class Filter extends ZuulFilter {
+public class PostFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return PRE_DECORATION_FILTER_ORDER - 1;
+        return SEND_RESPONSE_FILTER_ORDER - 1;
     }
 
     @Override
     public String filterType() {
-        return PRE_TYPE;
+        return POST_TYPE;
     }
 
     @Override
@@ -29,7 +28,9 @@ public class Filter extends ZuulFilter {
     @Override
     public Object run() throws ZuulException {
         RequestContext requestContext = RequestContext.getCurrentContext();
-        requestContext.addZuulRequestHeader("pre", "This is pre filter.");
+        requestContext.addZuulResponseHeader("POST", "This is POST filter FROM ZUUL.");
+
+        requestContext.getResponse().addHeader("POST NON-ZUUL", "This is post, NON-ZUUL");
 
         return null;
     }

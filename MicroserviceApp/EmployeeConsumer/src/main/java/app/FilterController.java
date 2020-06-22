@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FilterController {
 
     @GetMapping("/")
-    public String getFilter(HttpServletRequest request, HttpServletResponse response) {
+    public String getFilter(HttpServletRequest request) {
 
         Object valueObject = request.getHeader("pre");
         String value = valueObject.toString();
