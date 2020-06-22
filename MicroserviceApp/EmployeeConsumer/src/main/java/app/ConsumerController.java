@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-public class ConsumerControllerClient {
+public class ConsumerController {
 
     @Autowired
     private DiscoveryClient discoveryClient;

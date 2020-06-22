@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class EmployeeController {
+public class ProducerController {
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public Employee getEmployee(HttpServletRequest request) {
@@ -17,8 +17,8 @@ public class EmployeeController {
         emp.setDesignation("manager");
         emp.setEmpId("1");
         emp.setSalary(3000);
-
-        return emp;
+        throw new RuntimeException();
+//        return emp;
     }
 
 }
