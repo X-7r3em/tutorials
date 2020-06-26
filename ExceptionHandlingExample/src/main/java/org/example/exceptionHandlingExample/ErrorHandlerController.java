@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ErrorHandlerController {
     /**
      * Global exception handler for all the Controllers.
-     *
+     * <p>
      * {@link ExceptionHandler} shows us which Exceptions are handled by the method.
      * The method argument must match the caught exception, or be its parent, or
      * the Exception Handler will not catch it and throw the default exception.
@@ -20,7 +20,7 @@ public class ErrorHandlerController {
      * @throws Exception
      */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(RuntimeException ex) throws Exception {
+    public ResponseEntity<String> handleException(Exception ex) throws Exception {
         /**
          * If I have any exceptions that are annotated with {@link ResponseStatus},
          * this will throw them to the client as they are locally, instead of overriding them
@@ -32,7 +32,7 @@ public class ErrorHandlerController {
             throw ex;
         }
 
-        ResponseEntity<String> response = new ResponseEntity<>("This is GLOBAL EXCEPTION", HttpStatus.I_AM_A_TEAPOT);
+        ResponseEntity<String> response = new ResponseEntity<>("This is GLOBAL EXCEPTION: \n" + ex.getMessage(), HttpStatus.I_AM_A_TEAPOT);
 
         return response;
     }
