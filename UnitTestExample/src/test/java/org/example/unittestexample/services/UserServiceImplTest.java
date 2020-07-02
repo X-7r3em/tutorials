@@ -81,6 +81,31 @@ public class UserServiceImplTest {
         assertEquals(1, 0);
     }
 
+    //Example for mocking exceptions and checking after ACT
+    @Test
+    public void addUser_throwExampleWithAsserts() {
+        User expectedUser = new User("Tom", 15);
+
+        willThrow(new RuntimeException("My exception message."))
+                .given(userRepository)
+                .save(expectedUser);
+
+        // This will catch our Exception and we can then continue testing the assertions
+        try {
+            userService.addUser(expectedUser);
+            fail("Expected to throw Runtime Exception, but it did not fail.");
+        } catch (RuntimeException ex) {
+            assertEquals("My exception message.", ex.getMessage());
+        }
+
+        // These will all be checked
+        then(userRepository)
+                .should()
+                .save(expectedUser);
+
+        assertEquals(1, 1);
+    }
+
     @Test
     public void beforeFirstTest() {
         before[0] += 100;
