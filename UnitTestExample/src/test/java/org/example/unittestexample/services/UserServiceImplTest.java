@@ -69,11 +69,16 @@ public class UserServiceImplTest {
                 .given(userRepository)
                 .save(expected);
 
+        // The test creates a try-catch for this method. Once it throws, the try-catch will catch it.
+        // It will mark the test as passed and it will not check any further asserts.
         userService.addUser(expected);
 
+        // This will not be checked as the test will never come here.
         then(userRepository)
                 .should()
                 .save(expected);
+
+        assertEquals(1, 0);
     }
 
     @Test
