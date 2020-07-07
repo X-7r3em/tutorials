@@ -2,16 +2,14 @@ package org.example.objectmapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.objectmapper.dto.NestedBodyInner;
-import org.example.objectmapper.dto.MapObject;
-import org.example.objectmapper.dto.NestedBody;
-import org.example.objectmapper.dto.NestedInfo;
+import org.example.objectmapper.dto.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -74,6 +72,20 @@ public class ObjectMapperExampleTest {
 
     @Test
     public void nestedJsonToMapStringObjectWithJsonAnySetterExample() throws IOException {
+        AnySetterNested anySetterNested = new AnySetterNested("nested-name", 15);
+        AnySetterInfo anySetterInfo = new AnySetterInfo("info-id", "DDS", anySetterNested);
 
+        String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(anySetterInfo);
+        Map<String, Object> inner = new LinkedHashMap<>();
+        inner.put("name", "nested-name");
+        inner.put("size", 15);
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("brand", "DDS");
+        body.put("nested", inner);
+        AnySetterCollected expected = new AnySetterCollected("info-id", body);
+
+        AnySetterCollected actual = objectMapper.readerFor(AnySetterCollected.class).readValue(json);
+
+        assertEquals(expected, actual);
     }
 }

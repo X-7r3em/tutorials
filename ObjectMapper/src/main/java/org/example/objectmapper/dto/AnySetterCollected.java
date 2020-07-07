@@ -1,11 +1,15 @@
 package org.example.objectmapper.dto;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class AnySetterCollected {
     private String infoId;
-    private Map<String, Object> body;
+    // Needs to be initialized for @JsonANySetter
+    private Map<String, Object> body = new LinkedHashMap<>();
 
     public AnySetterCollected() {
     }
@@ -29,6 +33,11 @@ public class AnySetterCollected {
 
     public void setBody(Map<String, Object> body) {
         this.body = body;
+    }
+
+    @JsonAnySetter
+    public void add(String key, Object value) {
+        body.put(key, value);
     }
 
     @Override
