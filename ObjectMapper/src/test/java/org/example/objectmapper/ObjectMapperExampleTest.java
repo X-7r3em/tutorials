@@ -73,7 +73,6 @@ public class ObjectMapperExampleTest {
     public void nestedJsonToMapStringObjectWithJsonAnySetterExample() throws IOException {
         AnySetterNested anySetterNested = new AnySetterNested("nested-name", 15);
         AnySetterInfo anySetterInfo = new AnySetterInfo("info-id", "DDS", anySetterNested);
-
         String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(anySetterInfo);
         Map<String, Object> inner = new LinkedHashMap<>();
         inner.put("name", "nested-name");
