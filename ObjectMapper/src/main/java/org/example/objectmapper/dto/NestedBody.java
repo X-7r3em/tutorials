@@ -2,15 +2,15 @@ package org.example.objectmapper.dto;
 
 import java.util.Objects;
 
-public class TransactionBody {
+public class NestedBody {
     private String nestedId;
     private int nestedSize;
-    private TransactionBodyInner inner;
+    private NestedBodyInner inner;
 
-    public TransactionBody() {
+    public NestedBody() {
     }
 
-    public TransactionBody(String nestedId, int nestedSize, TransactionBodyInner inner) {
+    public NestedBody(String nestedId, int nestedSize, NestedBodyInner inner) {
         this.nestedId = nestedId;
         this.nestedSize = nestedSize;
         this.inner = inner;
@@ -32,11 +32,11 @@ public class TransactionBody {
         this.nestedSize = nestedSize;
     }
 
-    public TransactionBodyInner getInner() {
+    public NestedBodyInner getInner() {
         return inner;
     }
 
-    public void setInner(TransactionBodyInner inner) {
+    public void setInner(NestedBodyInner inner) {
         this.inner = inner;
     }
 
@@ -44,7 +44,7 @@ public class TransactionBody {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TransactionBody that = (TransactionBody) o;
+        NestedBody that = (NestedBody) o;
         return nestedSize == that.nestedSize &&
                 Objects.equals(nestedId, that.nestedId) &&
                 Objects.equals(inner, that.inner);

@@ -2,13 +2,13 @@ package org.example.objectmapper.dto;
 
 import java.util.Objects;
 
-public class TransactionBodyInner {
+public class NestedBodyInner {
     private int innerInfo;
 
-    public TransactionBodyInner() {
+    public NestedBodyInner() {
     }
 
-    public TransactionBodyInner(int innerInfo) {
+    public NestedBodyInner(int innerInfo) {
         this.innerInfo = innerInfo;
     }
 
@@ -24,7 +24,7 @@ public class TransactionBodyInner {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TransactionBodyInner that = (TransactionBodyInner) o;
+        NestedBodyInner that = (NestedBodyInner) o;
         return innerInfo == that.innerInfo;
     }
 

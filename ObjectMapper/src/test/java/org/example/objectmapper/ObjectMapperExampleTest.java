@@ -2,10 +2,10 @@ package org.example.objectmapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.objectmapper.dto.TransactionBodyInner;
+import org.example.objectmapper.dto.NestedBodyInner;
 import org.example.objectmapper.dto.MapObject;
-import org.example.objectmapper.dto.TransactionBody;
-import org.example.objectmapper.dto.TransactionInfo;
+import org.example.objectmapper.dto.NestedBody;
+import org.example.objectmapper.dto.NestedInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -52,7 +52,7 @@ public class ObjectMapperExampleTest {
     }
 
     @Test
-    public void nestedJsonTopMapStringObjectExample() throws IOException {
+    public void nestedJsonToMapStringObjectToObjectExample() throws IOException {
         // Using Map<String, Object> allows me to have nested structures in the JSON.
         Map<String, Object> inner = new HashMap<>();
         inner.put("innerInfo", 26);
@@ -60,15 +60,20 @@ public class ObjectMapperExampleTest {
         properties.put("nestedId", "nested-id");
         properties.put("nestedSize", 15);
         properties.put("inner", inner);
-        TransactionInfo expectedTransactionInfo = new TransactionInfo("id", "data", properties);
-        String nestedJsonObject = objectMapper.writeValueAsString(expectedTransactionInfo);
-        TransactionBody expectedBody = new TransactionBody("nested-id", 15, new TransactionBodyInner(26));
+        NestedInfo expectedNestedInfo = new NestedInfo("id", "data", properties);
+        String nestedJsonObject = objectMapper.writeValueAsString(expectedNestedInfo);
+        NestedBody expectedBody = new NestedBody("nested-id", 15, new NestedBodyInner(26));
 
-        TransactionInfo actualTransactionInfo = objectMapper.readerFor(TransactionInfo.class).readValue(nestedJsonObject);
-        TransactionBody actualBody = objectMapper.convertValue(actualTransactionInfo.getBody(), TransactionBody.class);
+        NestedInfo actualNestedInfo = objectMapper.readerFor(NestedInfo.class).readValue(nestedJsonObject);
+        NestedBody actualBody = objectMapper.convertValue(actualNestedInfo.getBody(), NestedBody.class);
 
-        assertEquals(expectedTransactionInfo, actualTransactionInfo);
+        assertEquals(expectedNestedInfo, actualNestedInfo);
         assertEquals(expectedBody, actualBody);
     }
 
+
+    @Test
+    public void nestedJsonToMapStringObjectWithJsonAnySetterExample() throws IOException {
+
+    }
 }
