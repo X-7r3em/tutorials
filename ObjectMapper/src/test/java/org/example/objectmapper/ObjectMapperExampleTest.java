@@ -69,7 +69,6 @@ public class ObjectMapperExampleTest {
         assertEquals(expectedBody, actualBody);
     }
 
-
     @Test
     public void nestedJsonToMapStringObjectWithJsonAnySetterExample() throws IOException {
         AnySetterNested anySetterNested = new AnySetterNested("nested-name", 15);
