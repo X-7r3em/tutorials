@@ -1,6 +1,7 @@
 package org.example.objectmapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.objectmapper.dto.*;
 import org.junit.jupiter.api.Test;
@@ -85,5 +86,22 @@ public class ObjectMapperExampleTest {
         AnySetterCollected actual = objectMapper.readerFor(AnySetterCollected.class).readValue(json);
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void convertNestedObjectToMapStringObjectExample() throws IOException {
+        AnySetterNested anySetterNested = new AnySetterNested("nested-name", 15);
+        AnySetterInfo anySetterInfo = new AnySetterInfo("info-id", "DDS", anySetterNested);
+        Map<String, Object> inner = new LinkedHashMap<>();
+        inner.put("name", "nested-name");
+        inner.put("size", 15);
+        Map<String, Object> expectedMap = new LinkedHashMap<>();
+        expectedMap.put("infoId", "info-id");
+        expectedMap.put("brand", "DDS");
+        expectedMap.put("nested", inner);
+
+        Map<String, Object> actualMap = objectMapper.convertValue(anySetterInfo, new TypeReference<Map<String, Object>>() {});
+
+        assertEquals(expectedMap, actualMap);
     }
 }
