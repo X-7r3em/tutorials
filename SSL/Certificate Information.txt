@@ -1,0 +1,14 @@
+.p12
+Defines an archive file format for storing many cryptographic object in a signe file. It is commonly used to bundle
+a private key with its X.509 Certificate or to bundle all the members of a chain of certificates.
+
+X.509
+Standart defining the format if public key certificates. A X.509 certificate contains the public key, subject information
+and CA details.
+
+SSL/TSL Cerfitificate
+Contains the Public Key, Certificate Authority details, Authority Signatyre and other
+
+CSR - Cerfitificate Sign Request
+Contains the new Public Key and Subject information like domain, company name and other. It is signed by the new Private key.
+The subject generates his new Private and Public key pair. Then he sends the Public key and the CSR signed by the Private key.
