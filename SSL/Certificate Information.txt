@@ -12,3 +12,31 @@ Contains the Public Key, Certificate Authority details, Authority Signatyre and 
 CSR - Cerfitificate Sign Request
 Contains the new Public Key and Subject information like domain, company name and other. It is signed by the new Private key.
 The subject generates his new Private and Public key pair. Then he sends the Public key and the CSR signed by the Private key.
+
+PKSC - Public Key Cryptographic Standart
+Standart format for storing cryptographic data.
+
+JKS - Java Key Store
+Another format for storing cryptographic data.
+
+.pem
+A Base64 encoded file containing cryptographic information. A PEM file may consist of a private key, a CA server certificate,
+and additional certificates that make up the trust chain. The trust chain must contain a root certificate and, if needed,
+intermediate certificates.
+
+.der
+DER files are digital certificates in binary format, instead of the instead of the ASCII PEM format. These files may also
+bear the CER or the CRT extension.
+
+.crt
+The CRT extension is used for certificates. The certificates may be encoded as binary DER or as ASCII PEM. The CER and 
+CRT extensions are nearly synonymous.  Most common among *nix systems
+
+.cer
+Alternate form of .crt (Microsoft Convention) You can use MS to convert .crt to .cer (.both DER encoded .cer, or base64[PEM] 
+encoded .cer)  The .cer file extension is also recognized by IE as a command to run a MS cryptoAPI command 
+(specifically rundll32.exe cryptext.dll,CryptExtOpenCER) which displays a dialogue for importing and/or viewing 
+certificate contents.
+
+.key
+The KEY extension is used both for public and private PKCS#8 keys. The keys may be encoded as binary DER or as ASCII PEM.
