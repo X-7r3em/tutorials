@@ -1,0 +1,19 @@
+keytool -list -v -keystore /C/Program\ Files/Java/jdk1.8.0_251/jre/lib/security/cacerts
+
+keytool -import -trustcacerts -alias mt5.gate.madarainvest.com -file ~/Desktop/client.p12 -keystore /C/Program\ Files/Java/jdk1.8.0_251/jre/lib/security/cacerts
+
+keytool -import -trustcacerts -alias server.mt5.gate.madarainvest.com -file ~/Desktop/mt5.gate.madarainvest.com.cert.pem -keystore /C/Program\ Files/Java/jdk1.8.0_251/jre/lib/security/cacerts
+
+// Export certificate from keystore
+keytool -export -rfc -keystore ~/Desktop/client.p12 -alias 1 -file client.cert.pem
+
+// List all contents in a keystore
+keytool -list -v -keystore ~/Desktop/client.p12
+
+
+keytool -list -v -keystore /C/Users/madar/AppData/Local/JetBrains/IdeaIC2020.1/tasks/cacerts
+
+// View Certificates
+keytool -printcert -v -file mydomain.crt
+winpty openssl x509 -in mt5.gate.madarainvest.com.cert.pem -text -noout
+

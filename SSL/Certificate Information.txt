@@ -40,3 +40,6 @@ certificate contents.
 
 .key
 The KEY extension is used both for public and private PKCS#8 keys. The keys may be encoded as binary DER or as ASCII PEM.
+
+Client Certificate
+It is a digital certificate which confirms to the X.509 system. It is used by client system to prove their identity to the remote server.
