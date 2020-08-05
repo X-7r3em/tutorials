@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
-    private NameGenerator nameGenerator;
+    private final UserRepository userRepository;
+    private final NameGenerator nameGenerator;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, NameGenerator nameGenerator) {
