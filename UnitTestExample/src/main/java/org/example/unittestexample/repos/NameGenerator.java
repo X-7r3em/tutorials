@@ -12,4 +12,8 @@ public class NameGenerator {
     public String getName() {
         return names.get(0);
     }
+
+    public String echo(String echo) {
+        return echo;
+    }
 }

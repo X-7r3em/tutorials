@@ -26,7 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByName(String name) {
-        nameGenerator.getName();
+        String someName = nameGenerator.getName();
+        nameGenerator.echo(name);
         return userRepository.getByName(name);
     }
 }
