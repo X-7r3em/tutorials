@@ -2,12 +2,16 @@ package org.example.unittestexample.repos;
 
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Component
 public class NameGenerator {
-    private static List<String> names = Arrays.asList("Tom");
+
+    private final List<String> names;
+
+    public NameGenerator(List<String> names) {
+        this.names = names;
+    }
 
     public String getName() {
         return names.get(0);
