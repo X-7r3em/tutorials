@@ -3,15 +3,14 @@ package org.example.unittestexample.services.junit5;
 import org.example.unittestexample.dtos.User;
 import org.example.unittestexample.repos.UserRepository;
 import org.example.unittestexample.services.UserService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.BDDMockito.then;
-import static org.mockito.BDDMockito.willThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.BDDMockito.*;
 
 //Indicates that the test needs the Spring Context
 @SpringBootTest
@@ -24,21 +23,44 @@ public class UserServiceImplTest {
     @Autowired
     private UserService userService;
 
-    @Test
-    public void addUser_throwExample() {
+    @Test //Difference in JUnit 5 vs JUnit 4 is the naming of the package.
+    public void addUser_whenGivenUser_willAddUser() {
         User expected = new User("Tom", 15);
 
-        willThrow(RuntimeException.class)
-                .given(userRepository)
-                .save(expected);
+        //Mocks the repository
+        given(userRepository.save(expected))
+                .willReturn(expected);
 
-        // We check that the exception is thrown this way, so that we can continue with the asserts bellow.
-        // This is an improvement compared to JUnit4.
-        Assertions.assertThrows(RuntimeException.class, () -> userService.addUser(expected));
+        User actual = userService.addUser(expected);
 
+        assertEquals(expected, actual);
+
+        //Checks if the method was called
         then(userRepository)
                 .should()
                 .save(expected);
+    }
+
+    //Example for mocking exceptions and checking after ACT
+    @Test
+    public void addUser_givenInvalidUser_willThrowException() {
+        User expectedUser = new User("Tom", 15);
+
+        willThrow(new RuntimeException("My exception message."))
+                .given(userRepository)
+                .save(expectedUser);
+
+        // This will catch our Exception and we can then continue testing the assertions
+
+        RuntimeException actualException =
+                assertThrows(RuntimeException.class, () -> userService.addUser(expectedUser));
+
+        assertEquals("My exception message.", actualException.getMessage());
+
+        // These will all be checked
+        then(userRepository)
+                .should()
+                .save(expectedUser);
 
         assertEquals(1, 1);
     }
