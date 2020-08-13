@@ -16,7 +16,7 @@ import static org.mockito.BDDMockito.willThrow;
 //Indicates that the test needs the Spring Context
 @SpringBootTest
 //Initializes all the Mocks automatically and we do not need @RunWith
-public class UserServiceImplJUnit5Test {
+public class UserServiceImplTest {
     //We need to mock only the beans that need mocking. The rest are autowired.
     @MockBean
     private UserRepository userRepository;

@@ -17,15 +17,20 @@ public class SpyBeanTest {
     private UserService userService;
 
     @SpyBean
+    // A mock that has the same functionality as the original. Can be used to verify
+    // and capture arguments
     private UserRepository userRepository;
 
     @Test
     public void spyBeanExample() {
         User user = new User("Vasko", 15);
-        userService.addUser(user);
-
         User expected = new User("Vasko", 15);
 
-        then(userRepository).should().save(expected);
+        userService.addUser(user);
+
+        // Here we can verify the Spy, but we do not need to give it any behaviour
+        then(userRepository)
+                .should()
+                .save(expected);
     }
 }

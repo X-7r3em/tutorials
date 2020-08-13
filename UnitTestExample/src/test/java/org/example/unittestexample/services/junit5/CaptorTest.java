@@ -27,9 +27,11 @@ public class CaptorTest {
     @Test
     public void captorExample() {
         User user = new User("Vasko", 15);
+        User expected = new User("Vasko", 15);
+
         userService.addUser(user);
 
-        User expected = new User("Vasko", 15);
+        // The Captor is used to catch the argument with which the Mock or Spy was invoked with
         Mockito.verify(userRepository).save(argumentCaptor.capture());
 
         User actual = argumentCaptor.getValue();
