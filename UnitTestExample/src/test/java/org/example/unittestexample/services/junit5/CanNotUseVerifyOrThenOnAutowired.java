@@ -19,9 +19,6 @@ public class CanNotUseVerifyOrThenOnAutowired {
     @Autowired
     private UserService userService;
 
-    @MockBean
-    private UserRepository userRepository;
-
     @Autowired
     private NameGeneratorImpl nameGenerator;
 
