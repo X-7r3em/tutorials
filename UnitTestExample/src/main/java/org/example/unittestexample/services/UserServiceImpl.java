@@ -20,14 +20,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User addUser(User user) {
-        nameGenerator.getName();
         return userRepository.save(user);
     }
 
     @Override
     public User getUserByName(String name) {
-        String someName = nameGenerator.getName();
-        nameGenerator.echo(name);
         return userRepository.getByName(name);
     }
 }

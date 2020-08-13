@@ -1,10 +1,8 @@
 package org.example.unittestexample.services.junit5;
 
-import org.example.unittestexample.dtos.User;
-import org.example.unittestexample.repos.NameGenerator;
+import org.example.unittestexample.repos.NameGeneratorImpl;
 import org.example.unittestexample.repos.UserRepository;
 import org.example.unittestexample.services.UserService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +23,7 @@ public class CanNotUseVerifyOrThenOnAutowired {
     private UserRepository userRepository;
 
     @Autowired
-    private NameGenerator nameGenerator;
+    private NameGeneratorImpl nameGenerator;
 
     @Test
     public void addUser_whenNameGeneratorIsAutowiredAndNotAMock_willNotBeAbleToUseThenOrVerify() {

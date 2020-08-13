@@ -1,16 +1,13 @@
-package org.example.unittestexample.services;
+package org.example.unittestexample.services.junit4;
 
 import org.example.unittestexample.dtos.User;
 import org.example.unittestexample.repos.NameGenerator;
 import org.example.unittestexample.repos.UserRepository;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.example.unittestexample.services.UserService;
+import org.example.unittestexample.services.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
@@ -26,13 +23,13 @@ public class UserServiceImplPureUnitTest {
     @Mock
     private NameGenerator nameGenerator;
 
-    @Test //Difference in JUnit 5 vs JUnit 4 is the naming of the package.
-    public void addUser_whenGivenUser_shouldAddUser() {
+    @Test // Difference in JUnit 5 vs JUnit 4 is the naming of the package.
+    public void addUser_whenGivenUser_willAddUser() {
         UserService userService = new UserServiceImpl(userRepository, nameGenerator);
 
         User expected = new User("Tom", 15);
 
-        //Mocks the repository
+        // Mocks the repository
         given(userRepository.save(expected))
                 .willReturn(expected);
 
@@ -40,7 +37,7 @@ public class UserServiceImplPureUnitTest {
 
         assertEquals(expected, actual);
 
-        //Checks if the method was called
+        // Checks if the method was called the correct amount of times and with the proper arguments
         then(userRepository)
                 .should()
                 .save(expected);

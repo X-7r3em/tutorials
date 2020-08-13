@@ -25,7 +25,7 @@ public class UserRepositoryImpl implements UserRepository {
         return users.stream()
                 .filter(u -> u.getName().equals(name))
                 .findFirst()
-                .get();
+                .orElse(null);
     }
 }
 

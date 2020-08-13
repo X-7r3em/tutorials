@@ -1,7 +1,8 @@
-package org.example.unittestexample.services;
+package org.example.unittestexample.services.junit5;
 
 import org.example.unittestexample.dtos.User;
 import org.example.unittestexample.repos.UserRepository;
+import org.example.unittestexample.services.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;

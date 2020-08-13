@@ -1,6 +1,6 @@
 package org.example.unittestexample.services.junit5;
 
-import org.example.unittestexample.repos.NameGenerator;
+import org.example.unittestexample.repos.NameGeneratorImpl;
 import org.example.unittestexample.repos.UserRepository;
 import org.example.unittestexample.services.UserService;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ public class SpyExample {
     @SpyBean
     // A mock that has all the methods mocked with the default behaviour
     // and is registered in the application context.
-    private NameGenerator nameGenerator;
+    private NameGeneratorImpl nameGenerator;
 
     @Test
     public void addUser_whenNameGeneratorIsAutowiredAndNotAMock_willNotBeAbleToUseThenOrVerify() {
@@ -34,10 +34,6 @@ public class SpyExample {
         then(nameGenerator)
                 .should()
                 .getName();
-
-        then(nameGenerator)
-                .should()
-                .echo("Vasko");
 
         assertEquals(1, 1);
     }

@@ -1,9 +1,8 @@
-package org.example.unittestexample.services;
+package org.example.unittestexample.services.junit4;
 
 import org.example.unittestexample.dtos.User;
 import org.example.unittestexample.repos.UserRepository;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.example.unittestexample.services.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +25,6 @@ public class UserServiceImplTest {
 
     @Autowired
     private UserService userService;
-
-    private static int[] before = new int[1];
-    private static int[] beforeClass = new int[1];
-
-    //Is done before every test. Equal to @BeforeEach
-    @Before
-    public void beforeEach() {
-        before[0] = 10;
-    }
-
-    //Is done once before all the tests. Equal to @BeforeAll
-    @BeforeClass
-    public static void beforeClass() {
-        beforeClass[0] = 10;
-    }
 
     @Test //Difference in JUnit 5 vs JUnit 4 is the naming of the package.
     public void addUser_whenGivenUser_shouldAddUser() {
@@ -105,29 +89,4 @@ public class UserServiceImplTest {
 
         assertEquals(1, 1);
     }
-
-    @Test
-    public void beforeFirstTest() {
-        before[0] += 100;
-        assertEquals(110, before[0]);
-    }
-
-    @Test
-    public void beforeSecondTest() {
-        before[0] += 25;
-        assertEquals(35, before[0]);
-    }
-
-    @Test
-    public void beforeClassFirstTest() {
-        beforeClass[0] += 100;
-        assertEquals(110, beforeClass[0]);
-    }
-
-    @Test
-    public void beforeClassClassSecondTest() {
-        beforeClass[0] += 25;
-        assertEquals(135, beforeClass[0]);
-    }
-
 }

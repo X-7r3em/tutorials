@@ -1,4 +1,4 @@
-package org.example.unittestexample.services;
+package org.example.unittestexample.services.junit4;
 
 import org.junit.Assert;
 import org.junit.Test;
