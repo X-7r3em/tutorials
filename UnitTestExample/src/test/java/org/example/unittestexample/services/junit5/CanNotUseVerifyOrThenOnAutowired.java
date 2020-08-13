@@ -12,9 +12,9 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.BDDMockito.willThrow;
 
-//Indicates that the test needs the Spring Context
+// Indicates that the test needs the Spring Context
 @SpringBootTest
-//Initializes all the Mocks automatically and we do not need @RunWith
+// Initializes all the Mocks automatically and we do not need @RunWith
 public class CanNotUseVerifyOrThenOnAutowired {
     @Autowired
     private UserService userService;

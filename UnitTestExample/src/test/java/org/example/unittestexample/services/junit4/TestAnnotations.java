@@ -15,13 +15,13 @@ public class TestAnnotations {
     private static final int[] before = new int[1];
     private static final int[] beforeClass = new int[1];
 
-    //Is done before every test. Equal to @BeforeEach
+    // Is done before every test. Equal to @BeforeEach
     @Before
     public void beforeEach() {
         before[0] = 10;
     }
 
-    //Is done once before all the tests. Equal to @BeforeAll
+    // Is done once before all the tests. Equal to @BeforeAll
     @BeforeClass
     public static void beforeClass() {
         beforeClass[0] = 10;

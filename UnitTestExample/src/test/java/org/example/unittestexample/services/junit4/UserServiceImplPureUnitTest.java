@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.*;
 
-//Initializes all the Mocks
+// Initializes all the Mocks
 @RunWith(SpringRunner.class)
 public class UserServiceImplPureUnitTest {
 

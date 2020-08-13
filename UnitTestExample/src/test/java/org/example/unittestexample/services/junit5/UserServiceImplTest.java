@@ -12,22 +12,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.*;
 
-//Indicates that the test needs the Spring Context
+// Indicates that the test needs the Spring Context
 @SpringBootTest
-//Initializes all the Mocks automatically and we do not need @RunWith
+// Initializes all the Mocks automatically and we do not need @RunWith
 public class UserServiceImplTest {
-    //We need to mock only the beans that need mocking. The rest are autowired.
+    // We need to mock only the beans that need mocking. The rest are autowired.
     @MockBean
     private UserRepository userRepository;
 
     @Autowired
     private UserService userService;
 
-    @Test //Difference in JUnit 5 vs JUnit 4 is the naming of the package.
+    @Test // Difference in JUnit 5 vs JUnit 4 is the naming of the package.
     public void addUser_whenGivenUser_willAddUser() {
         User expected = new User("Tom", 15);
 
-        //Mocks the repository
+        // Mocks the repository
         given(userRepository.save(expected))
                 .willReturn(expected);
 
@@ -35,13 +35,13 @@ public class UserServiceImplTest {
 
         assertEquals(expected, actual);
 
-        //Checks if the method was called
+        // Checks if the method was called
         then(userRepository)
                 .should()
                 .save(expected);
     }
 
-    //Example for mocking exceptions and checking after ACT
+    // Example for mocking exceptions and checking after ACT
     @Test
     public void addUser_givenInvalidUser_willThrowException() {
         User expectedUser = new User("Tom", 15);
@@ -51,7 +51,6 @@ public class UserServiceImplTest {
                 .save(expectedUser);
 
         // This will catch our Exception and we can then continue testing the assertions
-
         RuntimeException actualException =
                 assertThrows(RuntimeException.class, () -> userService.addUser(expectedUser));
 

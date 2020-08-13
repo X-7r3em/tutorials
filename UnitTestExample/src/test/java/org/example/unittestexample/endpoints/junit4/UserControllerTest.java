@@ -30,11 +30,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 public class UserControllerTest {
 
-    //Gives me the MVC object
+    // Gives me the MVC object
     @Autowired
     private MockMvc mockMvc;
 
-    //I need to mock all the dependencies of the said controller
+    // I need to mock all the dependencies of the said controller
     @MockBean
     private UserService userService;
 
