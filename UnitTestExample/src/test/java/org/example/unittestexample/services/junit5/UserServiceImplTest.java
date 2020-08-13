@@ -3,6 +3,7 @@ package org.example.unittestexample.services.junit5;
 import org.example.unittestexample.dtos.User;
 import org.example.unittestexample.repos.UserRepository;
 import org.example.unittestexample.services.UserService;
+import org.example.unittestexample.services.exception.UserNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,13 +47,13 @@ public class UserServiceImplTest {
     public void addUser_givenInvalidUser_willThrowException() {
         User expectedUser = new User("Tom", 15);
 
-        willThrow(new RuntimeException("My exception message."))
+        willThrow(new UserNotFoundException("My exception message."))
                 .given(userRepository)
                 .save(expectedUser);
 
         // This will catch our Exception and we can then continue testing the assertions
         RuntimeException actualException =
-                assertThrows(RuntimeException.class, () -> userService.addUser(expectedUser));
+                assertThrows(UserNotFoundException.class, () -> userService.addUser(expectedUser));
 
         assertEquals("My exception message.", actualException.getMessage());
 
