@@ -11,14 +11,15 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 
 @Configuration
-public class ApplicationConfiguration implements WebMvcConfigurer {
+public class ApplicationConfiguration {
 
     @Bean
     public Validator validator() {
         return Validation.buildDefaultValidatorFactory().getValidator();
     }
 
-    @Bean
+    @Bean // Be careful of WebMvcConfigurerAdapter as it may override this bean. So we need to
+    // overide its getValidator() method from the parent with this one.
     public LocalValidatorFactoryBean getValidator() {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource());
@@ -30,7 +31,7 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
         ReloadableResourceBundleMessageSource messageSource
                 = new ReloadableResourceBundleMessageSource();
 
-        messageSource.setBasename("classpath:messages.properties");
+        messageSource.setBasename("classpath:messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }

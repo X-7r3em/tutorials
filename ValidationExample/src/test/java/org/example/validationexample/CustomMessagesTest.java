@@ -8,8 +8,12 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import java.util.Formatter;
+
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class CustomMessagesTest {
@@ -20,10 +24,15 @@ public class CustomMessagesTest {
     @Test
     public void validate_givenInvalidLoginFormWithCustomMessage_willReturnCustomMessage() {
         LoginForm invalidLoginForm = new LoginForm("", "password");
-        Validator val = localValidatorFactoryBean;
-        Validator validator = localValidatorFactoryBean.getValidator();
-        Set<ConstraintViolation<LoginForm>> validations = val.validate(invalidLoginForm);
 
-        validations.forEach(v -> System.out.println(v.getMessage()));
+        Validator validator = localValidatorFactoryBean.getValidator();
+        Set<ConstraintViolation<LoginForm>> validations = validator.validate(invalidLoginForm);
+
+        String message = validations.stream()
+                .map(ConstraintViolation::getMessage)
+                .collect(Collectors.toList())
+                .get(0);
+
+        assertEquals("Some email message from a file", message);
     }
 }
