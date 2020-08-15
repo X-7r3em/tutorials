@@ -1,5 +1,6 @@
 package org.example.validationexample.config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ public class ApplicationConfiguration {
         return Validation.buildDefaultValidatorFactory().getValidator();
     }
 
+    @Qualifier("LocalValidator")
     @Bean // Be careful of WebMvcConfigurerAdapter as it may override this bean. So we need to
     // overide its getValidator() method from the parent with this one.
     public LocalValidatorFactoryBean getValidator() {

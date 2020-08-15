@@ -3,6 +3,7 @@ package org.example.validationexample;
 import org.example.validationexample.dto.LoginForm;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -18,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class CustomMessagesTest {
 
+    @Qualifier("LocalValidator")
     @Autowired
     private LocalValidatorFactoryBean localValidatorFactoryBean;
 
