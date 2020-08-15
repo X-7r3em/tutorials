@@ -1,5 +1,6 @@
 package org.example.validationexample.endpoints;
 
+import org.example.validationexample.annotations.CustomMethodValidation;
 import org.example.validationexample.dto.Bear;
 import org.example.validationexample.exceptions.CustomException;
 import org.springframework.http.HttpStatus;
@@ -23,5 +24,10 @@ public class HomeController {
     @GetMapping("/custom")
     public void throwCustomException() {
         throw new CustomException("Some custom exception message");
+    }
+
+    @GetMapping("/admin")
+    @CustomMethodValidation
+    public void customMethodAnnotation(String firstName, String lastName) {
     }
 }
