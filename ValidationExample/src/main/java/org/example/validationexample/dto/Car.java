@@ -20,4 +20,12 @@ public class Car {
     public void setMake(String make) {
         this.make = make;
     }
+
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "make='" + make + '\'' +
+                '}';
+    }
 }
