@@ -40,7 +40,8 @@ public class ApplicationConfiguration {
     }
 
     /**
-     * Needed for the @Validated annotation to validate methods
+     * Needed for the @Validated annotation to validate methods. Not needed if I have a Hibernate Validator
+     * on the classpath
      *
      * @return MethodValidationPostProcessor
      */
