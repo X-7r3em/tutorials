@@ -48,9 +48,6 @@ public class CustomValidationTest {
         Set<ConstraintViolation<HomeController>> validations =
                 executableValidator.validateParameters(homeController, method, values);
 
-        String message = validations.stream().map(ConstraintViolation::getMessage)
-                .findFirst().orElse(null);
-
         assertEquals(0, validations.size());
     }
 
