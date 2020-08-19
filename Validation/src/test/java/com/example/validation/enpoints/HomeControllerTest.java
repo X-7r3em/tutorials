@@ -147,7 +147,7 @@ public class HomeControllerTest {
         String contentAsString = mvcResult.getResponse().getContentAsString();
 
         assertEquals(
-                "methodWithValid.car.make: must not be null, methodWithValid.make: Make is null. But why?",
+                "methodWithValid.make: Make is null. But why?, methodWithValid.car.make: must not be null",
                 contentAsString);
     }
 
