@@ -46,4 +46,5 @@ public class ValidationTest {
         assertEquals("Age must be at least 10 but was 3", messages.get(0));
         assertEquals("Name must be between 5 and 10, but was 'Bo'", messages.get(1));
     }
+
 }
