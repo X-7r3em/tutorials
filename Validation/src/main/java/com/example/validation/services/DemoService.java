@@ -15,9 +15,7 @@ import javax.validation.constraints.NotNull;
 @Service
 @Validated
 public class DemoService {
-    // ToDo More examples with this. The Validated makes it so that the argumets are validated. Can I validate rest template?!?!??
-    public String methodWithValid(@Valid Car car, @NotNull(message = "Make is null be") String make) {
-
+    public String methodWithValid(@Valid Car car, @NotNull(message = "Make is null. But why?") String make) {
         return car.toString();
     }
 
