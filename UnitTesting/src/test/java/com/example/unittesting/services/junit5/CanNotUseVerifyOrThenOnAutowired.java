@@ -3,10 +3,12 @@ package com.example.unittesting.services.junit5;
 import com.example.unittesting.repos.NameGeneratorImpl;
 import com.example.unittesting.services.UserService;
 import org.junit.jupiter.api.Test;
+import org.mockito.exceptions.misusing.NotAMockException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.BDDMockito.willThrow;
 
@@ -21,13 +23,20 @@ public class CanNotUseVerifyOrThenOnAutowired {
     private NameGeneratorImpl nameGenerator;
 
     @Test
-    public void addUser_whenNameGeneratorIsAutowiredAndNotAMock_willNotBeAbleToUseThenOrVerify() {
+    public void addUser_whenNameGeneratorIsAutowiredAndNotAMock_willThrowNotAMockException() {
         userService.getUserByName("Vasko");
 
-        then(nameGenerator)
-                .should()
-                .getName();
+        NotAMockException exception = assertThrows(NotAMockException.class, () ->
+                then(nameGenerator)
+                        .should()
+                        .getName());
 
-        assertEquals(1, 1);
+        assertEquals("\n" +
+                "Argument passed to verify() is of type NameGeneratorImpl and is not a mock!\n" +
+                "Make sure you place the parenthesis correctly!\n" +
+                "See the examples of correct verifications:\n" +
+                "    verify(mock).someMethod();\n" +
+                "    verify(mock, times(10)).someMethod();\n" +
+                "    verify(mock, atLeastOnce()).someMethod();", exception.getMessage());
     }
 }
