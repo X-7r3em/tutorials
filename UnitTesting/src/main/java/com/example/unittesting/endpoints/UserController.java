@@ -27,4 +27,10 @@ public class UserController {
     public User createUser(@PathVariable String name) {
         return userService.getUserByName(name);
     }
+
+    @GetMapping("/exception")
+    public String createException() {
+        throw new IllegalArgumentException("This is the message of the Exception");
+    }
+
 }

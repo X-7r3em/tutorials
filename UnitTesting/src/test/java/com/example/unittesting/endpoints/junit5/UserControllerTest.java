@@ -9,11 +9,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -76,4 +81,30 @@ public class UserControllerTest {
                 .should()
                 .addUser(user);
     }
+
+    // Example how to handle response from an Error, if the Error itself is handled by the
+    // framework.
+    @Test
+    public void createException_willThrowException() throws Exception {
+        String expectedBody = "{\"errorCode\":418,\"message\":\"I guess I am a teapot\"}";
+
+        mockMvc.perform(get("/exception"))
+                .andExpect(status().isIAmATeapot())
+                .andExpect(content().contentType(APPLICATION_JSON))
+                .andExpect(content().string(expectedBody));
+    }
+
+    // We can also return the http call result directly
+    @Test
+    public void mockMvcCanReturnResult() throws Exception {
+        String expectedBody = "{\"errorCode\":418,\"message\":\"I guess I am a teapot\"}";
+
+        MvcResult mvcResult = mockMvc.perform(get("/exception"))
+                .andReturn();
+
+        assertEquals(418, mvcResult.getResponse().getStatus());
+        assertEquals(expectedBody, mvcResult.getResponse().getContentAsString());
+        assertEquals(APPLICATION_JSON_VALUE, mvcResult.getResponse().getContentType());
+    }
+
 }
