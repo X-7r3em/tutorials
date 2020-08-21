@@ -2,6 +2,8 @@ package com.example.exceptionhandling.endpoints;
 
 import com.example.exceptionhandling.dtos.Car;
 import com.example.exceptionhandling.exceptions.RethrownExceptionFromControllerAdvice;
+import com.example.exceptionhandling.services.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,9 @@ import javax.validation.Valid;
 @RestController
 @Validated
 public class HomeController {
+
+    @Autowired
+    private CarService carService;
 
     @GetMapping("/")
     public String getHome() {
@@ -39,6 +44,13 @@ public class HomeController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Car createCar(@Valid @RequestBody Car car) {
+        return car;
+    }
+
+    @PostMapping(value = "/carservice",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Car createCarService(@Valid @RequestBody Car car) {
         return car;
     }
 

@@ -13,24 +13,45 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Order(1)
 @ControllerAdvice
 public class CustomErrorHandler extends ResponseEntityExceptionHandler {
+    /**
+     * This method handles the {@link MethodArgumentNotValidException} and we define our own Response body for it.
+     * @param ex - the exception
+     * @param headers - the headers of the response
+     * @param status - the response status
+     * @param request - the request
+     * @return - the Response Entity
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<String> errors = new ArrayList<>();
-        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+        List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors()
+                .stream()
+                .sorted(Comparator.comparingInt(f -> f.getField().length()))
+                .collect(Collectors.toList());
+        for (FieldError error : fieldErrors) {
             errors.add(error.getField() + ": " + error.getDefaultMessage());
         }
 
-        for (ObjectError error : ex.getBindingResult().getGlobalErrors()) {
+        // ToDo: How the fuck do i get in here?!?
+        List<ObjectError> objectErrors = ex.getBindingResult().getGlobalErrors()
+                .stream()
+                .sorted(Comparator.comparingInt(f -> f.getObjectName().length()))
+                .collect(Collectors.toList());
+        for (ObjectError error : objectErrors) {
             errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
         }
 
         ApiError apiError =
-                new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), errors);
+                new ApiError(HttpStatus.BAD_REQUEST,
+                        "This error is due to an invalid Request body and MethodArgumentNotValidException",
+                        errors);
 
         return super.handleExceptionInternal(ex, apiError,headers, status, request);
     }
