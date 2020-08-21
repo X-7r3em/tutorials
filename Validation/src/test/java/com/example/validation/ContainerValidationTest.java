@@ -1,6 +1,5 @@
 package com.example.validation;
 
-import com.example.validation.dto.Car;
 import com.example.validation.dto.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

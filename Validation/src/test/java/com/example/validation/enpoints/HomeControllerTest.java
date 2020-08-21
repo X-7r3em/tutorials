@@ -14,6 +14,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -146,9 +151,12 @@ public class HomeControllerTest {
 
         String contentAsString = mvcResult.getResponse().getContentAsString();
 
-        assertEquals(
-                "methodWithValid.make: Make is null. But why?, methodWithValid.car.make: must not be null",
-                contentAsString);
+        List<String> violations = Arrays.stream(contentAsString.split(", "))
+                .sorted(Comparator.comparing(String::length))
+                .collect(Collectors.toList());
+
+        assertEquals("methodWithValid.car.make: must not be null", violations.get(0));
+        assertEquals("methodWithValid.make: Make is null. But why?", violations.get(1));
     }
 
 }

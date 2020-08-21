@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.awt.*;
 
 /**
- * @Validated causes Spring to automatically validate the methods, which are annotated for validation
+ * {@link Validated} causes Spring to automatically validate the methods, which are annotated for validation
  * The exception throw is javax.validation.ConstraintViolationException
  */
 @Validated

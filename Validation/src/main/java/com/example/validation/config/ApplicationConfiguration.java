@@ -21,7 +21,7 @@ public class ApplicationConfiguration {
 
     @Qualifier("LocalValidator")
     @Bean // Be careful of WebMvcConfigurerAdapter as it may override this bean. So we need to
-    // overide its getValidator() method from the parent with this one.
+    // override its getValidator() method from the parent with this one.
     public LocalValidatorFactoryBean getValidator() {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource());
