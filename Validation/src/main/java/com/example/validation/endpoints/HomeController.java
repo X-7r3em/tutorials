@@ -16,7 +16,7 @@ import javax.validation.Valid;
  * {@link Validated} causes Spring to automatically validate the methods, which are annotated for validation
  * The exception throw is javax.validation.ConstraintViolationException
  */
-
+@Validated
 @RestController
 public class HomeController {
 
