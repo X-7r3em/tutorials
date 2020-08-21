@@ -11,7 +11,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.awt.*;
 
 /**
  * {@link Validated} causes Spring to automatically validate the methods, which are annotated for validation
