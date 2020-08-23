@@ -37,7 +37,9 @@ public class UserServiceImplPureUnitTest {
 
         assertEquals(expected, actual);
 
-        // Checks if the method was called the correct amount of times and with the proper arguments
+        // Verify will check the number of times the method save() is
+        // called and also check if the arguments of the method are equal
+        // by calling their equals() method
         then(userRepository)
                 .should()
                 .save(expected);

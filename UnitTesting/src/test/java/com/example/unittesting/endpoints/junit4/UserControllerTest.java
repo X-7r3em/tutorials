@@ -52,8 +52,6 @@ public class UserControllerTest {
                 .andExpect(content().contentType(APPLICATION_JSON))
                 .andExpect(content().string(responseContent));
 
-        // This verifies that the userService was called with the proper method the needed
-        // amount of times and the arguments were equal.
         then(userService)
                 .should()
                 .addUser(user);
@@ -75,8 +73,6 @@ public class UserControllerTest {
                 .content(requestContent))
                 .andExpect(status().isOk());
 
-        // This verifies that the userService was called with the proper method the needed
-        // amount of times and the arguments were equal.
         then(userService)
                 .should()
                 .addUser(user);

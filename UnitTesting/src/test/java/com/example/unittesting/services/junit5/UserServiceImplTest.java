@@ -36,7 +36,9 @@ public class UserServiceImplTest {
 
         assertEquals(expected, actual);
 
-        // Checks if the method was called
+        // Verify will check the number of times the method save() is
+        // called and also check if the arguments of the method are equal
+        // by calling their equals() method
         then(userRepository)
                 .should()
                 .save(expected);
@@ -57,7 +59,9 @@ public class UserServiceImplTest {
 
         assertEquals("My exception message.", actualException.getMessage());
 
-        // These will all be checked
+        // Verify will check the number of times the method save() is
+        // called and also check if the arguments of the method are equal
+        // by calling their equals() method
         then(userRepository)
                 .should()
                 .save(expectedUser);
