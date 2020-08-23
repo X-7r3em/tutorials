@@ -8,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Order(5)
 @ControllerAdvice
@@ -28,17 +27,6 @@ public class OrderedHandlerController {
      */
     @ExceptionHandler({IndexOutOfBoundsException.class, IllegalArgumentException.class})
     public ResponseEntity<ApiError> handleException(RuntimeException ex) {
-        /**
-         * If I have any exceptions that are annotated with {@link ResponseStatus},
-         * this will throw them to the client as they are locally, instead of overriding them
-         * with the Global Handler.
-         *
-         * If I do not re-throw it, it will be overriden by the Global Handler.
-         */
-        if (ex.getClass().isAnnotationPresent(ResponseStatus.class)) {
-            throw ex;
-        }
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         ApiError apiError =

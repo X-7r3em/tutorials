@@ -53,6 +53,7 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
                         "This error is due to an invalid Request body and MethodArgumentNotValidException",
                         errors);
 
-        return super.handleExceptionInternal(ex, apiError,headers, status, request);
+        // Status is OK so that I can receive the response in the proxy example
+        return super.handleExceptionInternal(ex, apiError,headers, HttpStatus.OK, request);
     }
 }

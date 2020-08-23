@@ -26,16 +26,12 @@ public class GlobalErrorHandlerController {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleException(Exception ex) throws Exception {
-        /**
-         * If I have any exceptions that are annotated with {@link ResponseStatus},
-         * this will throw them to the client as they are locally, instead of overriding them
-         * with the Global Handler.
-         *
-         * Note: It is meaningless to have a list of exceptions in {@link ExceptionHandler}
-         * if the parameter of the method is not their parent
-         *
-         * If I do not re-throw it, it will be overridden by the Global Handler.
-         */
+        /* If I have any exceptions that are annotated with {@link ResponseStatus},
+         this will throw them to the client as they are locally, instead of overriding them
+         with the Global Handler.
+         Note: It is meaningless to have a list of exceptions in {@link ExceptionHandler}
+         if the parameter of the method is not their parent
+         If I do not re-throw it, it will be overridden by the Global Handler. */
         if (ex.getClass().isAnnotationPresent(ResponseStatus.class)) {
             throw ex;
         }
