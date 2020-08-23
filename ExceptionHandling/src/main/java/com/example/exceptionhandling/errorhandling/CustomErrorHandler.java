@@ -39,7 +39,7 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
             errors.add(error.getField() + ": " + error.getDefaultMessage());
         }
 
-        // ToDo: How the fuck do i get in here?!?
+        // ToDo: How do i get in here?!?
         List<ObjectError> objectErrors = ex.getBindingResult().getGlobalErrors()
                 .stream()
                 .sorted(Comparator.comparingInt(f -> f.getObjectName().length()))

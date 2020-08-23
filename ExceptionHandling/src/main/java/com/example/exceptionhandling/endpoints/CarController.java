@@ -32,7 +32,7 @@ public class CarController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Car createCarService(@RequestBody Car car) {
-        return carService.create(car);
+        return carService.createService(car);
     }
 
     // Request to a proxy
