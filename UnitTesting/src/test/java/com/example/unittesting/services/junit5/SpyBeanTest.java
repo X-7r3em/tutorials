@@ -17,8 +17,8 @@ public class SpyBeanTest {
     private UserService userService;
 
     @SpyBean
-    // A mock that has the same functionality as the original. Can be used to verify
-    // and capture arguments
+    /* A mock that has the same functionality as the original. Can be used to verify
+    and capture arguments */
     private UserRepository userRepository;
 
     @Test

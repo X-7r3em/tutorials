@@ -38,9 +38,9 @@ public class UserServiceImplTest {
 
         assertEquals(expected, actual);
 
-        // Verify will check the number of times the method save() is
-        // called and also check if the arguments of the method are equal
-        // by calling their equals() method
+        /* Verify will check the number of times the method save() is
+        called and also check if the arguments of the method are equal
+        by calling their equals() method */
         then(userRepository)
                 .should()
                 .save(expected);
@@ -55,8 +55,8 @@ public class UserServiceImplTest {
                 .given(userRepository)
                 .save(expected);
 
-        // The test creates a try-catch for this method. Once it throws, the try-catch will catch it.
-        // It will mark the test as passed and it will not check any further asserts.
+        /* The test creates a try-catch for this method. Once it throws, the try-catch will catch it.
+        It will mark the test as passed and it will not check any further asserts. */
         userService.addUser(expected);
 
         // This will not be checked as the test will never come here.
@@ -84,9 +84,9 @@ public class UserServiceImplTest {
             assertEquals("My exception message.", ex.getMessage());
         }
 
-        // Verify will check the number of times the method save() is
-        // called and also check if the arguments of the method are equal
-        // by calling their equals() method
+        /* Verify will check the number of times the method save() is
+        called and also check if the arguments of the method are equal
+        by calling their equals() method */
         then(userRepository)
                 .should()
                 .save(expectedUser);

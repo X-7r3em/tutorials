@@ -10,9 +10,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-// Uses a different application.properties file, as a different value may be needed.
-// We can also just use the application.properties in the resources of the tests
-@TestPropertySource(locations="classpath:test.properties")
+/*
+Uses a different application.properties file, as a different value may be needed.
+We can also just use the application.properties in the resources of the tests.
+ */
+@TestPropertySource(locations = "classpath:test.properties")
 public class ApplicationPropertiesTest {
 
     @Value(value = "${fakeRoute}")

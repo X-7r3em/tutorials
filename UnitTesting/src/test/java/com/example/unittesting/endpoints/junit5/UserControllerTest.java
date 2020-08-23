@@ -78,8 +78,7 @@ public class UserControllerTest {
                 .addUser(user);
     }
 
-    // Example how to handle response from an Error, if the Error itself is handled by the
-    // framework.
+    // Example how to handle response from an Error, if the Error itself is handled by the framework.
     @Test
     public void createException_willThrowException() throws Exception {
         String expectedBody = "{\"errorCode\":418,\"message\":\"I guess I am a teapot\"}";

@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.then;
-import static org.mockito.BDDMockito.willThrow;
 
 // Indicates that the test needs the Spring Context
 @SpringBootTest

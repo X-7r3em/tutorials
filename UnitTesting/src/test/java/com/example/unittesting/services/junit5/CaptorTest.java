@@ -63,29 +63,25 @@ public class CaptorTest {
 
         carService.save(car);
 
-        /**
-         * As the {@link Car} does not have the equals() defined, we can not use verify to check the
-         * arguments passed, we can check only the number of times called. So we need to capture the
-         * argument with an argument captor and then we need to manually assert each of the fields
-         * of the argument.
+        /*
+          As the {@link Car} does not have the equals() defined, we can not use verify to check the
+          arguments passed, we can check only the number of times called. So we need to capture the
+          argument with an argument captor and then we need to manually assert each of the fields
+          of the argument.
          */
         Mockito.verify(carRepository).save(carArgumentCaptor.capture());
 
         Car actual = carArgumentCaptor.getValue();
 
-        /**
-         * This should be invoked 0 times, as the expected is not equal by reference to the actual.
-         */
+
+        // This should be invoked 0 times, as the expected is not equal by reference to the actual.
         Mockito.verify(carRepository, Mockito.times(0)).save(expected);
 
-        /**
-         * The expected and actual are not the same, as there is no equals() defined
-         */
+
+        // The expected and actual are not the same, as there is no equals() defined
         Assertions.assertNotEquals(expected, actual);
 
-        /**
-         * The actual assertion of the fields as there is no equals()
-         */
+        // The actual assertion of the fields as there is no equals()
         Assertions.assertEquals(expected.getBrand(), actual.getBrand());
         Assertions.assertEquals(expected.getMake(), actual.getMake());
     }
