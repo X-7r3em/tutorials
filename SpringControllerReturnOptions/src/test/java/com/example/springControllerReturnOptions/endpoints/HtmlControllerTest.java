@@ -20,7 +20,7 @@ class HtmlControllerTest extends AbstractControllerTest {
                 "</body>" + System.lineSeparator() +
                 "</html>";
 
-        mockMvc.perform(get(HOST + "home"))
+        mockMvc.perform(get("/home"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.TEXT_HTML + ";charset=UTF-8"))
                 .andExpect(content().string(html));
@@ -35,7 +35,7 @@ class HtmlControllerTest extends AbstractControllerTest {
                         "</body>" + System.lineSeparator() +
                         "</html>";
 
-        mockMvc.perform(get(HOST + "home/mav"))
+        mockMvc.perform(get("/home/mav"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.TEXT_HTML + ";charset=UTF-8"))
                 .andExpect(content().string(html));
