@@ -3,6 +3,7 @@ package com.example.exceptionhandling.endpoints;
 import com.example.exceptionhandling.exceptions.RethrownExceptionFromControllerAdvice;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,5 +31,11 @@ public class HomeController {
     public String getCheckedException() throws Exception {
         throw new Exception("This is Local Checked Exception.");
     }
+
+    // For throwing MethodArgumentTypeMismatchException
+    @GetMapping("/type/mismatch")
+    public void getTypeMismatch(@RequestParam long id) throws Exception {
+    }
+
 
 }
