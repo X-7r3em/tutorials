@@ -4,6 +4,7 @@ import com.example.exceptionhandling.dtos.ApiError;
 import com.example.exceptionhandling.dtos.Car;
 import com.example.exceptionhandling.services.CarService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -12,10 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -53,17 +53,16 @@ class CarControllerTest {
     public void createCarService_givenInvalidCar_willThrowConstraintViolationException() throws Exception {
         Car car = new Car();
         String message = "Some violation message";
-        List<String> errors = Collections.singletonList("Whoops, something went wrong");
         ApiError expected =
-                new ApiError(HttpStatus.I_AM_A_TEAPOT, message, errors);
+                new ApiError(HttpStatus.BAD_REQUEST, message, new ArrayList<>());
 
         given(carService.createService(car))
-                .willThrow(new ConstraintViolationException("Some violation message", null));
+                .willThrow(new ConstraintViolationException("Some violation message", new HashSet<>()));
 
         mockMvc.perform(post("/carservice")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(car)))
-                .andExpect(status().isIAmATeapot())
+                .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().string(objectMapper.writeValueAsString(expected)));
     }

@@ -24,7 +24,7 @@ public class HomeController {
     // Simple @ExceptionHandler example for its arguments
     @GetMapping("/exrun")
     public String getRuntimeException() {
-        throw new NullPointerException("Some other shit !!");
+        throw new IndexOutOfBoundsException("Some other shit !!");
     }
 
     @GetMapping("/excheck")
