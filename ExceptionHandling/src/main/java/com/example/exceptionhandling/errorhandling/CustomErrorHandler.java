@@ -102,7 +102,7 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
 
         ApiError apiError =
                 new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(
+        return new ResponseEntity<>(
                 apiError, new HttpHeaders(), apiError.getStatus());
     }
 
@@ -141,7 +141,7 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
 
         ApiError apiError = new ApiError(HttpStatus.UNSUPPORTED_MEDIA_TYPE,
                 ex.getLocalizedMessage(), builder.substring(0, builder.length() - 2));
-        return new ResponseEntity<Object>(
+        return new ResponseEntity<>(
                 apiError, new HttpHeaders(), apiError.getStatus());
     }
 
