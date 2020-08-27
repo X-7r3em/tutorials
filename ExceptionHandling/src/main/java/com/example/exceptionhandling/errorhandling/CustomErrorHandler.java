@@ -64,7 +64,7 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
                         errors);
 
         // Status is OK so that I can receive the response in the proxy example
-        return super.handleExceptionInternal(ex, apiError, headers, HttpStatus.OK, request);
+        return super.handleExceptionInternal(ex, apiError, headers, apiError.getStatus(), request);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(
             MethodArgumentTypeMismatchException ex, WebRequest request) {
         String error =
-                ex.getName() + " should be of type " + ex.getRequiredType().getName();
+                ex.getName() + " should be of type " + Objects.requireNonNull(ex.getRequiredType()).getName();
 
         ApiError apiError =
                 new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);

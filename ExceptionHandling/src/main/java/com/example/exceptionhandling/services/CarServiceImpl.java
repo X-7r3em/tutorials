@@ -4,6 +4,7 @@ import com.example.exceptionhandling.annotations.CarViolation;
 import com.example.exceptionhandling.dtos.Car;
 import com.example.exceptionhandling.dtos.ProxyResponseContainer;
 import com.example.exceptionhandling.exceptions.FailedProxyRequestException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -14,6 +15,14 @@ import java.util.Objects;
 @Service
 @Validated
 public class CarServiceImpl implements CarService {
+
+    private final RestTemplateResponseErrorHandler restTemplateResponseErrorHandler;
+
+    @Autowired
+    public CarServiceImpl(RestTemplateResponseErrorHandler restTemplateResponseErrorHandler) {
+        this.restTemplateResponseErrorHandler = restTemplateResponseErrorHandler;
+    }
+
     @Override
     @CarViolation
     // @Valid here may produce an Constraint Exception for Liskov Substitution
@@ -25,6 +34,8 @@ public class CarServiceImpl implements CarService {
     public Car createProxy(Car car) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
+        // Adds the updated Response Template with the new Error Handler
+        restTemplate.setErrorHandler(restTemplateResponseErrorHandler);
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Car> httpEntity = new HttpEntity<>(car, headers);
         ResponseEntity<ProxyResponseContainer>
@@ -42,3 +53,4 @@ public class CarServiceImpl implements CarService {
         return new Car(response.getBody().getMake(), response.getBody().getModel());
     }
 }
+
