@@ -1,3 +1,5 @@
+# Creates a many to many db for testing
+
 DROP DATABASE demodb_db;
 CREATE DATABASE demodb_db;
 USE demodb_db;

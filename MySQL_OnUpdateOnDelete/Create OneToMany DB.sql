@@ -1,3 +1,5 @@
+# Creates a one to many db for testing
+
 DROP DATABASE demodb_db;
 CREATE DATABASE demodb_db;
 USE demodb_db;
@@ -20,7 +22,7 @@ CREATE TABLE demodb_db.books(
 	CONSTRAINT fk_books_warehouses
 	FOREIGN KEY (warehouse_id)
     REFERENCES warehouses(id)
-    ON UPDATE CASCADE
+    ON UPDATE SET NULL
 );
 
 INSERT INTO demodb_db.books(name, warehouse_id) VALUES
