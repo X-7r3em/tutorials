@@ -19,3 +19,27 @@ INSERT INTO child_e_e (name, parent_id) VALUES
 ("Child 2", 1),
 ("Child 3", 2),
 ("Child 4", 3);
+
+INSERT INTO parent_e_l (name) VALUES
+("Parent 1"),
+("Parent 2"),
+("Parent 3"),
+("Parent 4");
+
+INSERT INTO child_e_l (name, parent_id) VALUES
+("Child 1", 1),
+("Child 2", 1),
+("Child 3", 2),
+("Child 4", 3);
+
+INSERT INTO parent_l_e (name) VALUES
+("Parent 1"),
+("Parent 2"),
+("Parent 3"),
+("Parent 4");
+
+INSERT INTO child_l_e (name, parent_id) VALUES
+("Child 1", 1),
+("Child 2", 1),
+("Child 3", 2),
+("Child 4", 3);
