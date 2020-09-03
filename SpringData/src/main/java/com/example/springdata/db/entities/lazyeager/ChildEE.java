@@ -1,7 +1,6 @@
 package com.example.springdata.db.entities.lazyeager;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "child_e_e")
@@ -15,7 +14,7 @@ public class ChildEE {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id")
-    private Set<ParentEE> parents;
+    private ParentEE parent;
 
     public long getId() {
         return id;
@@ -33,11 +32,11 @@ public class ChildEE {
         this.name = name;
     }
 
-    public Set<ParentEE> getParents() {
-        return parents;
+    public ParentEE getParent() {
+        return parent;
     }
 
-    public void setParents(Set<ParentEE> parents) {
-        this.parents = parents;
+    public void setParent(ParentEE parent) {
+        this.parent = parent;
     }
 }

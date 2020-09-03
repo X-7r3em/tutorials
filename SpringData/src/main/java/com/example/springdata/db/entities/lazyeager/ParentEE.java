@@ -1,7 +1,5 @@
 package com.example.springdata.db.entities.lazyeager;
 
-import com.example.springdata.db.entities.Teacher;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,6 +13,30 @@ public class ParentEE {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "parents", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
     private Set<ChildEE> children;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<ChildEE> getChildren() {
+        return children;
+    }
+
+    public void setChildren(Set<ChildEE> children) {
+        this.children = children;
+    }
 }
