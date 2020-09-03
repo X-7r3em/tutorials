@@ -3,7 +3,6 @@ package com.example.springdata.db.entities.lazyeager;
 import javax.persistence.*;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "parent_l_e")
 public class ParentLE {
