@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "parent_e_l")
+@Table(name = "parents_e_l")
 public class ParentEL {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

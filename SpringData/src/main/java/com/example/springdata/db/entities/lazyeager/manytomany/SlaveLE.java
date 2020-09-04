@@ -1,11 +1,11 @@
-package com.example.springdata.db.entities.lazyeager.manytoone;
+package com.example.springdata.db.entities.lazyeager.manytomany;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "parents_l_e")
-public class ParentLE {
+@Table(name = "slaves_l_e")
+public class SlaveLE {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -13,8 +13,8 @@ public class ParentLE {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
-    private Set<ChildLE> children;
+    @ManyToMany(mappedBy = "slaves", fetch = FetchType.EAGER)
+    private Set<OwnerLE> owners;
 
     public long getId() {
         return id;
@@ -32,11 +32,11 @@ public class ParentLE {
         this.name = name;
     }
 
-    public Set<ChildLE> getChildren() {
-        return children;
+    public Set<OwnerLE> getOwners() {
+        return owners;
     }
 
-    public void setChildren(Set<ChildLE> children) {
-        this.children = children;
+    public void setOwners(Set<OwnerLE> owners) {
+        this.owners = owners;
     }
 }

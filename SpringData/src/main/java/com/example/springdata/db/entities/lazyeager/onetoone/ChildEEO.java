@@ -3,7 +3,7 @@ package com.example.springdata.db.entities.lazyeager.onetoone;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "child_e_e_o")
+@Table(name = "children_e_e_o")
 public class ChildEEO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,7 +3,7 @@ package com.example.springdata.db.entities.lazyeager.manytoone;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "child_e_l")
+@Table(name = "children_e_l")
 public class ChildEL {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
