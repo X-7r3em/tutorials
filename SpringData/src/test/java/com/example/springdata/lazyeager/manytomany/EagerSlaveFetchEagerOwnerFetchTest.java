@@ -32,9 +32,9 @@ public class EagerSlaveFetchEagerOwnerFetchTest extends AbstractUnitTest {
     @Test
     public void whenReadFromOwnerRepository_givenEagerOwnerFetchAndEagerSlaveFetch_shouldExecuteThreeSqlRequest() {
         printMessage("Owner Call");
-        OwnerEE parent = ownerRepository.findById(1L).get();
+        OwnerEE owner = ownerRepository.findById(1L).get();
         printMessage("Slave Call");
-        Set<SlaveEE> slaves = parent.getSlaves();
+        Set<SlaveEE> slaves = owner.getSlaves();
         assertEquals(2, slaves.size());
         printMessage("End of Calls");
     }
@@ -42,9 +42,9 @@ public class EagerSlaveFetchEagerOwnerFetchTest extends AbstractUnitTest {
     @Test
     public void whenReadFromSlaveRepository_givenEagerOwnerFetchAndEagerSlaveFetch_shouldExecuteTwoSqlRequests() {
         printMessage("Slave Call");
-        SlaveEE child = slaveRepository.findById(1L).get();
+        SlaveEE slave = slaveRepository.findById(1L).get();
         printMessage("Owner Call");
-        Set<OwnerEE> owners = child.getOwners();
+        Set<OwnerEE> owners = slave.getOwners();
         assertEquals(1, owners.size());
         printMessage("End of Calls");
     }

@@ -29,9 +29,9 @@ public class LazySlaveFetchEagerOwnerFetchTest extends AbstractUnitTest {
     @Transactional
     public void whenReadFromOwnerRepository_givenEagerOwnerFetchAndLazySlaveFetch_shouldExecuteThreeSqlRequest() {
         printMessage("Owner Call");
-        OwnerLE parent = ownerRepository.findById(1L).get();
+        OwnerLE owner = ownerRepository.findById(1L).get();
         printMessage("Slave Call");
-        Set<SlaveLE> slaves = parent.getSlaves();
+        Set<SlaveLE> slaves = owner.getSlaves();
         assertEquals(2, slaves.size());
         printMessage("End of Calls");
     }
@@ -39,9 +39,9 @@ public class LazySlaveFetchEagerOwnerFetchTest extends AbstractUnitTest {
     @Test
     public void whenReadFromSlaveRepository_givenEagerOwnerFetchAndLazySlaveFetch_shouldExecuteOneSqlRequest() {
         printMessage("Slave Call");
-        SlaveLE child = slaveRepository.findById(1L).get();
+        SlaveLE slave = slaveRepository.findById(1L).get();
         printMessage("Owner Call");
-        Set<OwnerLE> owners = child.getOwners();
+        Set<OwnerLE> owners = slave.getOwners();
         assertEquals(1, owners.size());
         printMessage("End of Calls");
     }
