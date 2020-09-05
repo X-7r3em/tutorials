@@ -23,17 +23,22 @@ public class EagerParentFetchEagerChildFetchTest extends AbstractUnitTest {
 
     /**
      * {@link Transactional} is not needed as all the entities are eagerly loaded in the same session.
+     * <p>
+     * The request is done in one SQL query eagerly.
      */
     @Test
     public void whenReadFromParentRepository_givenEagerParentFetchAndEagerChildFetch_shouldExecuteASingleSqlRequest() {
         printMessage("Parent Call");
         ParentEEO parent = parentRepository.findById(1L).get();
         printMessage("Child Call");
-        ChildEEO child = parent.getChildren();
+        ChildEEO child = parent.getChild();
         assertEquals("Child 1", child.getName());
         printMessage("End of Calls");
     }
 
+    /**
+     * The request is done in one SQL query eagerly.
+     */
     @Test
     public void whenReadFromChildRepository_givenEagerParentFetchAndEagerChildFetch_shouldExecuteOneSqlRequest() {
         printMessage("Child Call");

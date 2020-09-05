@@ -26,6 +26,8 @@ public class LazyParentFetchLazyChildFetchTest extends AbstractUnitTest {
     /**
      * {@link Transactional} guarantees that I have an open Persistence Context (Hibernate session)
      * and I can fetch lazily the needed objects.
+     *
+     * The data is taken with 2 requests lazily.
      */
     @Test
     @Transactional
@@ -38,6 +40,9 @@ public class LazyParentFetchLazyChildFetchTest extends AbstractUnitTest {
         printMessage("End of Calls");
     }
 
+    /**
+     * The data is taken with 2 requests lazily.
+     */
     @Test
     @Transactional
     public void whenReadFromChildRepository_givenLazyParentFetchAndLazyChildFetch_shouldExecuteTwoSqlRequests() {

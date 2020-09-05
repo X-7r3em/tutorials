@@ -24,6 +24,8 @@ public class LazyParentFetchLazyChildFetchTest extends AbstractUnitTest {
     /**
      * {@link Transactional} guarantees that I have an open Persistence Context (Hibernate session)
      * and I can fetch lazily the needed objects.
+     *
+     * The data is taken in 1 request even though specified to be lazy.
      */
     @Test
     @Transactional
@@ -31,11 +33,14 @@ public class LazyParentFetchLazyChildFetchTest extends AbstractUnitTest {
         printMessage("Parent Call");
         ParentLLO parent = parentRepository.findById(1L).get();
         printMessage("Child Call");
-        ChildLLO children = parent.getChildren();
-        assertEquals("Child 1", children.getName());
+        ChildLLO child = parent.getChild();
+        assertEquals("Child 1", child.getName());
         printMessage("End of Calls");
     }
 
+    /**
+     * The data is gathered in two requests lazily.
+     */
     @Test
     @Transactional
     public void whenReadFromChildRepository_givenLazyParentFetchAndLazyChildFetch_shouldExecuteTwoSqlRequests() {

@@ -13,7 +13,7 @@ public class ParentLEO {
     private String name;
 
     @OneToOne(mappedBy = "parent", fetch = FetchType.EAGER)
-    private ChildLEO children;
+    private ChildLEO child;
 
     public long getId() {
         return id;
@@ -31,11 +31,11 @@ public class ParentLEO {
         this.name = name;
     }
 
-    public ChildLEO getChildren() {
-        return children;
+    public ChildLEO getChild() {
+        return child;
     }
 
-    public void setChildren(ChildLEO children) {
-        this.children = children;
+    public void setChild(ChildLEO children) {
+        this.child = children;
     }
 }

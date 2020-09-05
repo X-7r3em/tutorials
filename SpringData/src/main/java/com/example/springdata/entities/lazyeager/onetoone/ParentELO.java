@@ -13,7 +13,7 @@ public class ParentELO {
     private String name;
 
     @OneToOne(mappedBy = "parent", fetch = FetchType.LAZY)
-    private ChildELO children;
+    private ChildELO child;
 
     public long getId() {
         return id;
@@ -31,11 +31,11 @@ public class ParentELO {
         this.name = name;
     }
 
-    public ChildELO getChildren() {
-        return children;
+    public ChildELO getChild() {
+        return child;
     }
 
-    public void setChildren(ChildELO children) {
-        this.children = children;
+    public void setChild(ChildELO children) {
+        this.child = children;
     }
 }
