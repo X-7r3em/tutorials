@@ -23,13 +23,12 @@ public class LazySlaveFetchLazyOwnerFetchTest extends AbstractUnitTest {
     @Autowired
     private SlaveLLRepository slaveRepository;
 
-    /*
-     * After the slaves are fetched for the owner, for each slave, there is another request to see his owners.
-     * Meaning that we have 3 slaves, and they will need 3 requests to the database.
+    /**
+     * First the owner is fetched. Then in the 2nd request his slaves are fetched lazily.
      */
     @Test
     @Transactional
-    public void whenReadFromOwnerRepository_givenLazyOwnerFetchAndLazySlaveFetch_shouldExecuteFiveSqlRequests() {
+    public void whenReadFromOwnerRepository_givenLazyOwnerFetchAndLazySlaveFetch_shouldExecuteTwoSqlRequests() {
         printMessage("Owner Call");
         OwnerLL owner = ownerRepository.findById(1L).get();
         printMessage("Slave Call");
@@ -38,8 +37,12 @@ public class LazySlaveFetchLazyOwnerFetchTest extends AbstractUnitTest {
         printMessage("End of Calls");
     }
 
+    /**
+     * The first request fetches the slaves. The 2nd fetches lazily the owners of the slave.
+     */
     @Test
-    public void whenReadFromSlaveRepository_givenLazyOwnerFetchAndLazySlaveFetch_shouldExecuteOneSqlRequest() {
+    @Transactional
+    public void whenReadFromSlaveRepository_givenLazyOwnerFetchAndLazySlaveFetch_shouldExecuteTwoSqlRequests() {
         printMessage("Slave Call");
         SlaveLL slave = slaveRepository.findById(1L).get();
         printMessage("Owner Call");

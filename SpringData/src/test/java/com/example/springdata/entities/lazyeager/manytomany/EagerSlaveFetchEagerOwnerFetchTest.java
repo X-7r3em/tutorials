@@ -25,9 +25,13 @@ public class EagerSlaveFetchEagerOwnerFetchTest extends AbstractUnitTest {
 
     /**
      * {@link Transactional} is not needed as all the entities are eagerly loaded in the same session.
+     *
+     * First we fetch the owner and his slaves eagerly. Then for the 3 slaves, we need to check their
+     * owners in 3 requests. Then as one of the slaves has multiple owners, we need to check the slaves
+     * of that owner as well with another query.
      */
     @Test
-    public void whenReadFromOwnerRepository_givenEagerOwnerFetchAndEagerSlaveFetch_shouldExecuteThreeSqlRequest() {
+    public void whenReadFromOwnerRepository_givenEagerOwnerFetchAndEagerSlaveFetch_shouldExecuteFiveSqlRequest() {
         printMessage("Owner Call");
         OwnerEE owner = ownerRepository.findById(1L).get();
         printMessage("Slave Call");
@@ -36,8 +40,14 @@ public class EagerSlaveFetchEagerOwnerFetchTest extends AbstractUnitTest {
         printMessage("End of Calls");
     }
 
+    /**
+     * First we take the slave with all of its owners in one request. However, the owner has 2 slaves and
+     * they are fetched with 2nd query. The other slave also has 2 owners, so his other owner is fetched
+     * with 3rd query. The new owner has 2 slaves, so the other slave is fetched with the 4th query.
+     * The last slave is checked for multiple owners with the 5th query.
+     */
     @Test
-    public void whenReadFromSlaveRepository_givenEagerOwnerFetchAndEagerSlaveFetch_shouldExecuteTwoSqlRequests() {
+    public void whenReadFromSlaveRepository_givenEagerOwnerFetchAndEagerSlaveFetch_shouldExecuteFiveSqlRequests() {
         printMessage("Slave Call");
         SlaveEE slave = slaveRepository.findById(1L).get();
         printMessage("Owner Call");

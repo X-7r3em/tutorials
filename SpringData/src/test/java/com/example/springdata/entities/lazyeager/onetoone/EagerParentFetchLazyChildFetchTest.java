@@ -25,7 +25,12 @@ public class EagerParentFetchLazyChildFetchTest extends AbstractUnitTest {
      * {@link Transactional} guarantees that I have an open Persistence Context (Hibernate session)
      * and I can fetch lazily the needed objects.
      *
-     * The data is fetched in a single query, even though it should be lazily fetched.
+     * The data is fetched in a at the same time, even though it should be lazily fetched. This is because
+     * Hibernate needs to enquire the child table to see if it will be null, or a proxy. So instead of
+     * just checking, it pulls the data as well. This is only when requesting from a Parent entity in a
+     * {@link javax.persistence.OneToOne} relationship.
+     *
+     * Note: In some versions of Hibernate, optional = false may alter this behaviour.
      */
     @Test
     public void whenReadFromParentRepository_givenEagerParentFetchAndLazyChildFetch_shouldExecuteTwoSqlRequests() {

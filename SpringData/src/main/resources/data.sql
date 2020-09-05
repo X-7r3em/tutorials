@@ -109,6 +109,7 @@ INSERT INTO slaves_e_e (name) VALUES
 INSERT INTO owners_slaves_e_e (owner_id, slave_id) VALUES
 (1, 1),
 (1, 2),
+(2, 2),
 (2, 3),
 (3, 4);
 

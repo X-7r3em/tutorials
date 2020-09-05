@@ -23,6 +23,10 @@ public class LazySlaveFetchEagerOwnerFetchTest extends AbstractUnitTest {
     @Autowired
     private SlaveLERepository slaveRepository;
 
+    /**
+     * The 1st query gets the owner. After that we fetch his slaves lazily in the 2nd request.
+     * For each slave we do one request to fetch his owners, creating the 3rd and 4th requests.
+     */
     @Test
     @Transactional
     public void whenReadFromOwnerRepository_givenEagerOwnerFetchAndLazySlaveFetch_shouldExecuteThreeSqlRequest() {
@@ -34,6 +38,9 @@ public class LazySlaveFetchEagerOwnerFetchTest extends AbstractUnitTest {
         printMessage("End of Calls");
     }
 
+    /**
+     * All the owners of the slave are fetched eagerly in one request.
+     */
     @Test
     public void whenReadFromSlaveRepository_givenEagerOwnerFetchAndLazySlaveFetch_shouldExecuteOneSqlRequest() {
         printMessage("Slave Call");

@@ -25,9 +25,11 @@ public class EagerSlaveFetchLazyOwnerFetchTest extends AbstractUnitTest {
 
     /**
      * {@link Transactional} is not needed as all the entities are eagerly loaded in the same session.
+     *
+     * The owner fetches the slaves in one eager request.
      */
     @Test
-    public void whenReadFromOwnerRepository_givenLazyOwnerFetchAndEagerSlaveFetch_shouldExecuteThreeSqlRequest() {
+    public void whenReadFromOwnerRepository_givenLazyOwnerFetchAndEagerSlaveFetch_shouldExecuteOneSqlRequest() {
         printMessage("Owner Call");
         OwnerEL owner = ownerRepository.findById(1L).get();
         printMessage("Slave Call");
@@ -36,6 +38,10 @@ public class EagerSlaveFetchLazyOwnerFetchTest extends AbstractUnitTest {
         printMessage("End of Calls");
     }
 
+    /**
+     * The slaves are fetched in the 1st request. Then the owners are loaded lazily in the 2nd. In the
+     * 3rd the slaves of the owner are fetched eagerly.
+     */
     @Test
     @Transactional
     public void whenReadFromSlaveRepository_givenLazyOwnerFetchAndEagerSlaveFetch_shouldExecuteThreeSqlRequests() {

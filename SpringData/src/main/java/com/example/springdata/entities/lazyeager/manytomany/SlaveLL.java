@@ -13,7 +13,7 @@ public class SlaveLL {
     @Column
     private String name;
 
-    @ManyToMany(mappedBy = "slaves", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "slaves", fetch = FetchType.LAZY)
     private Set<OwnerLL> owners;
 
     public long getId() {
