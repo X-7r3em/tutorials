@@ -167,3 +167,10 @@ INSERT INTO owners_slaves_l_l (owner_id, slave_id) VALUES
 (2, 3),
 (3, 4),
 (1, 4);
+
+
+INSERT INTO authors (name) VALUES
+("Vasko author");
+
+INSERT INTO books(name, author_id) VALUES
+("Book", 1);
