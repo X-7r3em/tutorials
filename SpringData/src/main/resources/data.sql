@@ -19,6 +19,9 @@ INSERT INTO parents_e_l (name) VALUES
 INSERT INTO children_e_l (name, parent_id) VALUES
 ("Child 1", 1),
 ("Child 2", 1),
+("Child 2-1", 1),
+("Child 2-2", 1),
+("Child 2-3", 1),
 ("Child 3", 2),
 ("Child 4", 3);
 
@@ -43,6 +46,9 @@ INSERT INTO parents_l_l (name) VALUES
 INSERT INTO children_l_l (name, parent_id) VALUES
 ("Child 1", 1),
 ("Child 2", 1),
+("Child 2-1", 1),
+("Child 2-2", 1),
+("Child 2-3", 1),
 ("Child 3", 2),
 ("Child 4", 3);
 

@@ -1,6 +1,4 @@
-package com.example.springdata.entities.osiv;
-
-import com.example.springdata.entities.lazyeager.onetoone.ParentELO;
+package com.example.springdata.entities.crud;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +13,7 @@ public class Author {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Book> books;
 
     public long getId() {

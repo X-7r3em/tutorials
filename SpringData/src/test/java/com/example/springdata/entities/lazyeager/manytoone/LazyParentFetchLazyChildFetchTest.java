@@ -36,7 +36,7 @@ public class LazyParentFetchLazyChildFetchTest extends AbstractUnitTest {
         ParentLL parent = parentRepository.findById(1L).get();
         printMessage("Child Call");
         Set<ChildLL> children = parent.getChildren();
-        assertEquals(2, children.size());
+        assertEquals(5, children.size());
         printMessage("End of Calls");
     }
 

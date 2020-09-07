@@ -1,6 +1,4 @@
-package com.example.springdata.entities.osiv;
-
-import com.example.springdata.entities.lazyeager.onetoone.ParentELO;
+package com.example.springdata.entities.crud;
 
 import javax.persistence.*;
 

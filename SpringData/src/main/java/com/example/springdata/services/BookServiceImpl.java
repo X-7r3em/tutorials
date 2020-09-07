@@ -1,8 +1,8 @@
 package com.example.springdata.services;
 
-import com.example.springdata.entities.osiv.Book;
+import com.example.springdata.entities.crud.Book;
 import com.example.springdata.models.BookModel;
-import com.example.springdata.repositories.osiv.BookRepository;
+import com.example.springdata.repositories.crud.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

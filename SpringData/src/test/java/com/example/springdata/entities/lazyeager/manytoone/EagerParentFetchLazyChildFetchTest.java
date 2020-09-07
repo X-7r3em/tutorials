@@ -36,10 +36,12 @@ public class EagerParentFetchLazyChildFetchTest extends AbstractUnitTest {
         ParentEL parent = parentRepository.findById(1L).get();
         printMessage("Child Call");
         Set<ChildEL> children = parent.getChildren();
-        assertEquals(2, children.size());
+        assertEquals(5, children.size());
         printMessage("End of Calls");
     }
 
+    // ToDo N+1 and log how this happens from the Parent To Child relationship
+    // ToDo Entity Graph example or @Query
     /**
      * The data is taken in one SQL request eagerly. After that the parent needs to be initialized with
      * another SQL query as if we just took him from the database.
@@ -53,7 +55,7 @@ public class EagerParentFetchLazyChildFetchTest extends AbstractUnitTest {
         ParentEL parent = child.getParent();
         Set<ChildEL> children = parent.getChildren();
         assertEquals("Parent 1", parent.getName());
-        assertEquals(2, children.size());
+        assertEquals(5, children.size());
         printMessage("End of Call");
     }
 }
