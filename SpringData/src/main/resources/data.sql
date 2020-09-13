@@ -180,3 +180,25 @@ INSERT INTO authors (name) VALUES
 
 INSERT INTO books(name, author_id) VALUES
 ("Book", 1);
+
+INSERT INTO parent_mo_cascade(name) VALUES
+("Parent Persist 1"),
+("Parent Persist 2"),
+("Parent Persist 3");
+
+INSERT INTO child_mo_cascade(name, parent_mo_cascade_id) VALUES
+("Child Persist 1", 1),
+("Child Persist 2", 2),
+("Child Persist 3", 3),
+("Child Persist 4", 3);
+
+INSERT INTO parent_oo_cascade(name) VALUES
+("Parent Persist 1"),
+("Parent Persist 2"),
+("Parent Persist 3"),
+("Parent Persist 4");
+
+INSERT INTO child_oo_cascade(name, parent_oo_cascade_id) VALUES
+("Child Persist 1", 1),
+("Child Persist 2", 2),
+("Child Persist 3", 3);

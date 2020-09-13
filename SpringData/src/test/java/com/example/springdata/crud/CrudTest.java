@@ -60,4 +60,27 @@ public class CrudTest {
         bookRepository.saveAndFlush(book);
     }
 
+
+    /**
+     * The Persistence context will update the name of the book and commit it.
+     */
+    @Transactional
+    @Test
+    @Commit
+    public void updatingFromParentRelation() {
+        Author author = authorRepository.findById(1L).get();
+        author.getBooks().iterator().next().setName("This books name has been updated");
+    }
+
+    /**
+     * The Persistence context will update the name of the book and commit it.
+     */
+    @Transactional
+    @Test
+    @Commit
+    public void updatingFromChildRelation() {
+        Book book = bookRepository.findById(1L).get();
+        book.setName(book.getName() + " was updated!");
+    }
+
 }
