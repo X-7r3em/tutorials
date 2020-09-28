@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.*;
@@ -57,28 +59,34 @@ public class UserControllerTest {
                 .addUser(user);
     }
 
+    /*
+    Mock MVC does not forward the request, so we can not get the actual body, that we would get on an actual request.
+    This is why we can not check them explicitly. However, we can make a custom handler and then we can see the result.
+    We get the status and the reason from the annotation on the Exception, as they are known.
+    */
     @Test
     public void addUser_givenInvalidUser_willThrowException() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         User user = new User("Vasko", 15);
         String requestContent = mapper.writeValueAsString(user);
 
-        willThrow(UserNotFoundException.class)
+        willThrow(new UserNotFoundException("The user was not found!"))
                 .given(userService)
                 .addUser(user);
 
-        mockMvc.perform(post("/add")
+        ResultActions resultActions = mockMvc.perform(post("/add")
                 .header("mock-header", "mock-value")
                 .contentType(APPLICATION_JSON)
                 .content(requestContent))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(status().reason("I am thrown from the annotation"));
 
         then(userService)
                 .should()
                 .addUser(user);
     }
 
-    // Example how to handle response from an Error, if the Error itself is handled by the framework.
+    // Example how to handle response from an Error, if the Error itself is handled not by the framework.
     @Test
     public void createException_willThrowException() throws Exception {
         String expectedBody = "{\"errorCode\":418,\"message\":\"I guess I am a teapot\"}";
