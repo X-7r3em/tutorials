@@ -16,18 +16,22 @@ public class ProducerController {
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public Employee getEmployee(HttpServletRequest request) {
-
         Employee emp = new Employee();
         emp.setName("emp1");
         emp.setDesignation("manager");
         emp.setEmpId("1");
         emp.setSalary(3000);
+        return emp;
+    }
+
+    @RequestMapping(value = "/exc", method = RequestMethod.GET)
+    public Employee throwException(HttpServletRequest request) {
         throw new RuntimeException();
-//        return emp;
     }
 
     /**
      * The Proxy can return a proper error json response
+     *
      * @param exception - the caught exception
      * @return - the error response
      */

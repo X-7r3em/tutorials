@@ -29,7 +29,7 @@ public class PreFilter extends ZuulFilter {
     @Override
     public Object run() throws ZuulException {
         RequestContext requestContext = RequestContext.getCurrentContext();
-        requestContext.addZuulRequestHeader("pre", "This is pre filter.");
+        requestContext.addZuulRequestHeader("PRE", "This is PRE filter.");
 
         return null;
     }

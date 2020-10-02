@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 public class FilterController {
 
     @GetMapping("/")
-    public String getFilter(HttpServletRequest request) {
+    public String getFilter(HttpServletRequest request, HttpServletResponse response) {
 
-        Object valueObject = request.getHeader("pre");
+        Object valueObject = request.getHeader("PRE");
         String value = valueObject.toString();
+
+        response.addHeader("PRE-FROM-POST",
+                "Information from PRE filter added from HttpServletResponse");
 
         return value;
     }
