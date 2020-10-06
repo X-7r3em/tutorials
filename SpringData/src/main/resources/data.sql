@@ -202,3 +202,31 @@ INSERT INTO child_oo_cascade(name, parent_oo_cascade_id) VALUES
 ("Child Persist 1", 1),
 ("Child Persist 2", 2),
 ("Child Persist 3", 3);
+
+INSERT INTO parent_mm_cascade(name) VALUES
+("Parent Persist 1"),
+("Parent Persist 2"),
+("Parent Persist 3"),
+("Parent Persist 4"),
+("Parent Delete 5"),
+("Parent Delete 6"),
+("Parent Delete 7");
+
+INSERT INTO child_mm_cascade(name) VALUES
+("Child Persist 1"),
+("Child Persist 2"),
+("Child Persist 3"),
+("Child Persist 4"),
+("Child Delete 5"),
+("Child Delete 6"),
+("Child Delete 7");
+
+INSERT INTO child_parent_mm_cascade(parent_mm_cascade_id, child_mm_cascade_id) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(5, 5),
+(5, 6),
+(6, 6),
+(6, 7),
+(7, 7);

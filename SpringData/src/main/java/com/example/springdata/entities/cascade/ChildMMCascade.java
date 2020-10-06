@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "parent_mo_cascade")
-public class ParentMOCascade {
+@Table(name = "child_mm_cascade")
+public class ChildMMCascade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -13,8 +13,12 @@ public class ParentMOCascade {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Set<ChildMOCascade> children;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinTable(name = "child_parent_mm_cascade",
+            joinColumns = @JoinColumn(name = "child_mm_cascade_id"),
+            inverseJoinColumns = @JoinColumn(name = "parent_mm_cascade_id")
+    )
+    private Set<ParentMMCascade> parents;
 
     public long getId() {
         return id;
@@ -32,20 +36,20 @@ public class ParentMOCascade {
         this.name = name;
     }
 
-    public Set<ChildMOCascade> getChildren() {
-        return children;
+    public Set<ParentMMCascade> getParents() {
+        return parents;
     }
 
-    public void setChildren(Set<ChildMOCascade> children) {
-        this.children = children;
+    public void setParents(Set<ParentMMCascade> parents) {
+        this.parents = parents;
     }
 
     @Override
     public String toString() {
-        return "ParentMOCascade{" +
+        return "ChildPersist{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", children=" + children +
+                ", parent=" + parents +
                 '}';
     }
 }

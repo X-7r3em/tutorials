@@ -42,7 +42,7 @@ public class ChildMOCascade {
 
     @Override
     public String toString() {
-        return "ChildPersist{" +
+        return "ChildMOCascade{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", parent=" + parent +

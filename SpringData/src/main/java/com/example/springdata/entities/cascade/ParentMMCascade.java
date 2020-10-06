@@ -1,10 +1,11 @@
 package com.example.springdata.entities.cascade;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "child_oo_cascade")
-public class ChildOOCascade {
+@Table(name = "parent_mm_cascade")
+public class ParentMMCascade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -12,9 +13,8 @@ public class ChildOOCascade {
     @Column
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "parent_oo_cascade_id", unique = true) /* unique is needed or else it is a ManyToOne */
-    private ParentOOCascade parent;
+    @ManyToMany(mappedBy = "parents", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Set<ChildMMCascade> children;
 
     public long getId() {
         return id;
@@ -32,20 +32,20 @@ public class ChildOOCascade {
         this.name = name;
     }
 
-    public ParentOOCascade getParent() {
-        return parent;
+    public Set<ChildMMCascade> getChildren() {
+        return children;
     }
 
-    public void setParent(ParentOOCascade parent) {
-        this.parent = parent;
+    public void setChildren(Set<ChildMMCascade> children) {
+        this.children = children;
     }
 
     @Override
     public String toString() {
-        return "ChildOOCascade{" +
+        return "ParentMMCascade{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", parent=" + parent +
+                ", children=" + children +
                 '}';
     }
 }
