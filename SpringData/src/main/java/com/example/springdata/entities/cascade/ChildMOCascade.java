@@ -3,7 +3,7 @@ package com.example.springdata.entities.cascade;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "child_mo_cascade")
+@Table(name = "children_mo_cascade")
 public class ChildMOCascade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

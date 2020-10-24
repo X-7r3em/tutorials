@@ -1,6 +1,6 @@
 package com.example.springdata.repositories.lazyeager.onetoone;
 
-import com.example.springdata.entities.lazyeager.onetoone.ParentLLO;
+import com.example.springdata.lazyeager.onetoone.ParentLLO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

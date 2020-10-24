@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "child_mm_cascade")
+@Table(name = "children_mm_cascade")
 public class ChildMMCascade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

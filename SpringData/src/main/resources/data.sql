@@ -181,29 +181,29 @@ INSERT INTO authors (name) VALUES
 INSERT INTO books(name, author_id) VALUES
 ("Book", 1);
 
-INSERT INTO parent_mo_cascade(name) VALUES
+INSERT INTO parents_mo_cascade(name) VALUES
 ("Parent Persist 1"),
 ("Parent Persist 2"),
 ("Parent Persist 3");
 
-INSERT INTO child_mo_cascade(name, parent_mo_cascade_id) VALUES
+INSERT INTO children_mo_cascade(name, parent_mo_cascade_id) VALUES
 ("Child Persist 1", 1),
 ("Child Persist 2", 2),
 ("Child Persist 3", 3),
 ("Child Persist 4", 3);
 
-INSERT INTO parent_oo_cascade(name) VALUES
+INSERT INTO parents_oo_cascade(name) VALUES
 ("Parent Persist 1"),
 ("Parent Persist 2"),
 ("Parent Persist 3"),
 ("Parent Persist 4");
 
-INSERT INTO child_oo_cascade(name, parent_oo_cascade_id) VALUES
+INSERT INTO children_oo_cascade(name, parent_oo_cascade_id) VALUES
 ("Child Persist 1", 1),
 ("Child Persist 2", 2),
 ("Child Persist 3", 3);
 
-INSERT INTO parent_mm_cascade(name) VALUES
+INSERT INTO parents_mm_cascade(name) VALUES
 ("Parent Persist 1"),
 ("Parent Persist 2"),
 ("Parent Persist 3"),
@@ -212,7 +212,7 @@ INSERT INTO parent_mm_cascade(name) VALUES
 ("Parent Delete 6"),
 ("Parent Delete 7");
 
-INSERT INTO child_mm_cascade(name) VALUES
+INSERT INTO children_mm_cascade(name) VALUES
 ("Child Persist 1"),
 ("Child Persist 2"),
 ("Child Persist 3"),
@@ -230,3 +230,39 @@ INSERT INTO child_parent_mm_cascade(parent_mm_cascade_id, child_mm_cascade_id) V
 (6, 6),
 (6, 7),
 (7, 7);
+
+INSERT INTO parents_oo_orphan_p(name) VALUES
+("Parent Orphan 1"),
+("Parent Orphan 2"),
+("Parent Orphan 3"),
+("Parent Orphan 4");
+
+INSERT INTO children_oo_orphan_p(name, parent_id) VALUES
+("Child Orphan 1", 1),
+("Child Orphan 2", 2),
+("Child Orphan 3", 3),
+("Child Orphan 4", 4);
+
+INSERT INTO parents_oo_orphan_c(name) VALUES
+("Parent Orphan 1"),
+("Parent Orphan 2"),
+("Parent Orphan 3"),
+("Parent Orphan 4");
+
+INSERT INTO children_oo_orphan_c(name, parent_id) VALUES
+("Child Orphan 1", 1),
+("Child Orphan 2", 2),
+("Child Orphan 3", 3),
+("Child Orphan 4", 4);
+
+INSERT INTO parents_om_orphan(name) VALUES
+("Parent Orphan 1"),
+("Parent Orphan 2"),
+("Parent Orphan 3"),
+("Parent Orphan 4");
+
+INSERT INTO children_om_orphan(name, parent_id) VALUES
+("Child Orphan 1", 1),
+("Child Orphan 2", 2),
+("Child Orphan 3", 3),
+("Child Orphan 4", 4);

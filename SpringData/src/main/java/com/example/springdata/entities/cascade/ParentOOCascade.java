@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "parent_oo_cascade")
+@Table(name = "parents_oo_cascade")
 public class ParentOOCascade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
