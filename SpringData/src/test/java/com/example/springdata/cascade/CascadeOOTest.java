@@ -1,20 +1,14 @@
 package com.example.springdata.cascade;
 
-import com.example.springdata.entities.cascade.ChildMOCascade;
 import com.example.springdata.entities.cascade.ChildOOCascade;
-import com.example.springdata.entities.cascade.ParentMOCascade;
 import com.example.springdata.entities.cascade.ParentOOCascade;
 import com.example.springdata.repositories.cascade.ChildCascadeOORepository;
-import com.example.springdata.repositories.cascade.ParentCascadeMORepository;
 import com.example.springdata.repositories.cascade.ParentCascadeOORepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collections;
-import java.util.HashSet;
 
 @SpringBootTest
 public class CascadeOOTest {

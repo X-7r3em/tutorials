@@ -3,7 +3,6 @@ package com.example.springdata.cascade;
 import com.example.springdata.entities.cascade.ChildMOCascade;
 import com.example.springdata.entities.cascade.ParentMOCascade;
 import com.example.springdata.repositories.cascade.ChildCascadeMORepository;
-import com.example.springdata.repositories.cascade.ChildCascadeOORepository;
 import com.example.springdata.repositories.cascade.ParentCascadeMORepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
