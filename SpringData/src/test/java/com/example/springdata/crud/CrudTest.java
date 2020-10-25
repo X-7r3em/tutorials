@@ -83,4 +83,21 @@ public class CrudTest {
         book.setName(book.getName() + " was updated!");
     }
 
+    /**
+     * Creating a new entity with an ID and trying to persist it will not happen as
+     * the new entity is detached (has an ID but is not in the JPA Context).
+     */
+    @Transactional
+    @Test
+    @Commit
+    public void addingNewChildWithIdToParent_willNotPersist() {
+        Author author = authorRepository.findById(1L).get();
+        Book book = new Book();
+        book.setAuthor(author);
+        book.setName("Newly added book of author");
+        // Uncomment this to receive the desired result. Can not catch the exception due to @Transactional.
+        //book.setId(10);
+        author.getBooks().add(book);
+    }
+
 }
