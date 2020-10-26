@@ -1,0 +1,9 @@
+287  [main] INFO  com.example.logging.test - Info
+288  [main] WARN  com.example.logging.test - Warn
+288  [main] ERROR com.example.logging.test - Error
+274  [main] INFO  com.example.logging.test - Info
+278  [main] WARN  com.example.logging.test - Warn
+278  [main] ERROR com.example.logging.test - Error
+321  [main] INFO  com.example.logging.test - Info
+321  [main] WARN  com.example.logging.test - Warn
+321  [main] ERROR com.example.logging.test - Error
