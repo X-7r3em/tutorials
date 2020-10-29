@@ -1,4 +1,4 @@
-package com.example.objectmapper;
+package com.example.objectmapper.dto;
 
 public class Dto {
     private String transactionId;

@@ -1,4 +1,4 @@
-package com.example.objectmapper;
+package com.example.objectmapper.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

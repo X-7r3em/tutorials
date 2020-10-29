@@ -1,4 +1,4 @@
-package com.example.objectmapper;
+package com.example.objectmapper.dto;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

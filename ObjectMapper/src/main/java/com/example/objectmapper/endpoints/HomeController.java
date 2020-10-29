@@ -1,5 +1,7 @@
-package com.example.objectmapper;
+package com.example.objectmapper.endpoints;
 
+import com.example.objectmapper.dto.Car;
+import com.example.objectmapper.dto.Dto;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.objectmapper.dto.Person;
