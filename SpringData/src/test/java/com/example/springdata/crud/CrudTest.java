@@ -5,10 +5,14 @@ import com.example.springdata.entities.crud.Book;
 import com.example.springdata.repositories.crud.AuthorRepository;
 import com.example.springdata.repositories.crud.BookRepository;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @SpringBootTest
 public class CrudTest {
@@ -98,6 +102,44 @@ public class CrudTest {
         // Uncomment this to receive the desired result. Can not catch the exception due to @Transactional.
         //book.setId(10);
         author.getBooks().add(book);
+    }
+
+    /**
+     * Demonstrates the N + 1 problem on a one to many relationship. Will query all the Authors. Then for each of the
+     * N authors will execute a query for his books.
+     */
+    @Transactional
+    @Test
+    public void NPlusOneProblem() {
+        Logger LOGGER = LoggerFactory.getLogger(getClass());
+
+        LOGGER.info("Query for authors");
+        List<Author> authors = authorRepository.findAll();
+        LOGGER.info("{} authors were found", authors.size());
+        for (Author author : authors) {
+            LOGGER.info("--------------------------------------------------");
+            LOGGER.info("Author {} books were queried", author.getName());
+            LOGGER.info("Author {} has {} books", author.getName(), author.getBooks().size());
+        }
+    }
+
+    /**
+     * N + 1 problem solved with {@link org.springframework.data.jpa.repository.EntityGraph}. Can be solved with
+     * {@link javax.persistence.NamedEntityGraph} as well.
+     */
+    @Transactional
+    @Test
+    public void NPlusOneProblemSolvedWithEntityGraph() {
+        Logger LOGGER = LoggerFactory.getLogger(getClass());
+
+        LOGGER.info("Query for authors");
+        List<Author> authors = authorRepository.findByNameIsNotNull();
+        LOGGER.info("{} authors were found", authors.size());
+        for (Author author : authors) {
+            LOGGER.info("--------------------------------------------------");
+            LOGGER.info("Author {} books were queried", author.getName());
+            LOGGER.info("Author {} has {} books", author.getName(), author.getBooks().size());
+        }
     }
 
 }

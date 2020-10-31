@@ -176,10 +176,23 @@ INSERT INTO owners_slaves_l_l (owner_id, slave_id) VALUES
 
 
 INSERT INTO authors (name) VALUES
-("Vasko author");
+("Vasko"),
+("Tosho"),
+("Bojo"),
+("Pinko");
 
 INSERT INTO books(name, author_id) VALUES
-("Book", 1);
+("Book 11", 1),
+("Book 12", 1),
+("Book 13", 1),
+("Book 14", 1),
+("Book 21", 2),
+("Book 22", 2),
+("Book 23", 2),
+("Book 24", 2),
+("Book 31", 3),
+("Book 32", 3),
+("Book 33", 3);
 
 INSERT INTO parents_mo_cascade(name) VALUES
 ("Parent Persist 1"),
