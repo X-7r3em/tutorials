@@ -15,7 +15,7 @@ import static org.mockito.BDDMockito.*;
 
 // Initializes all the Mocks
 @RunWith(SpringRunner.class)
-public class UserServiceImplPureUnitTest {
+public class UserServicePureUnitTest {
 
     @Mock
     private UserRepository userRepository;

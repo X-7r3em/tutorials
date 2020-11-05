@@ -17,8 +17,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/add",
-    produces = MediaType.APPLICATION_JSON_VALUE,
-    consumes = MediaType.APPLICATION_JSON_VALUE)
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public User createUser(@RequestBody User user) {
         return userService.addUser(user);
     }
@@ -33,4 +33,8 @@ public class UserController {
         throw new IllegalArgumentException("This is the message of the Exception");
     }
 
+    @GetMapping("/exception/unhandled")
+    public String createUnhandledException() {
+        throw new NullPointerException("This is the message of the Mock Exception");
+    }
 }
