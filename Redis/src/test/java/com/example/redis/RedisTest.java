@@ -18,4 +18,13 @@ public class RedisTest {
         assertEquals("Value", jedis.get("Key"));
     }
 
+    @Test
+    public void savingHashesWithJedis() {
+        // Do not forget to start the Redis server!
+        Jedis jedis = new Jedis();
+        jedis.hset("key", "field", "value");
+        jedis.expire("key", 20);
+        assertEquals("value", jedis.hget("key","field"));
+    }
+
 }

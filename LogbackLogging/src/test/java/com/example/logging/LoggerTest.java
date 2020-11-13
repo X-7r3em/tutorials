@@ -41,4 +41,13 @@ public class LoggerTest {
         testLogger.error("Error");
     }
 
+    @Test
+    public void loggingExceptionsDoesNotRequireBrackets() {
+        try {
+            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            LOGGER.info("Exception was thrown", e);
+        }
+    }
+
 }
