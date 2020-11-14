@@ -25,7 +25,7 @@ public class CrudTest {
     /**
      * Example for saving from the parent relation (owned relation).
      * We need {@link javax.persistence.CascadeType} for this to be saved.
-     * Again, {@link Transactional} is needed for the session.
+     * Again, {@link Transactional} is needed for the session when accessing the children.
      * <p>
      * Note: {@link Commit} is used so that after the test is done, the actual database
      * transaction is committed, instead of ignored.
