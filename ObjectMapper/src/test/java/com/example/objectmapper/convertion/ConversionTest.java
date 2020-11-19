@@ -1,5 +1,6 @@
 package com.example.objectmapper.convertion;
 
+import com.example.objectmapper.dto.Bear;
 import com.example.objectmapper.dto.convertion.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -160,5 +161,13 @@ public class ConversionTest {
         assertEquals(expectedToy.getName(), actualToy.getName());
         // The old property name is overwritten
         assertNull(actualToyWithDefaultName.getName());
+    }
+
+    @Test
+    public void nestingElementsOnDeserializationWithJsonCreator() throws JsonProcessingException {
+        String json = "{\"name\": \"Beary\",\"size\": 10}";
+        Bear bear = objectMapper.readValue(json, Bear.class);
+        assertEquals("Beary", bear.getName());
+        assertEquals(10, bear.getClaw().getSize());
     }
 }
