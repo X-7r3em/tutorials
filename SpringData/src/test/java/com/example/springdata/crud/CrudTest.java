@@ -2,8 +2,11 @@ package com.example.springdata.crud;
 
 import com.example.springdata.entities.crud.Author;
 import com.example.springdata.entities.crud.Book;
+import com.example.springdata.entities.crud.Course;
+import com.example.springdata.entities.crud.Teacher;
 import com.example.springdata.repositories.crud.AuthorRepository;
 import com.example.springdata.repositories.crud.BookRepository;
+import com.example.springdata.repositories.crud.CourseRepository;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
 
 @SpringBootTest
@@ -21,6 +25,9 @@ public class CrudTest {
 
     @Autowired
     private AuthorRepository authorRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
 
     /**
      * Example for saving from the parent relation (owned relation).
@@ -140,6 +147,33 @@ public class CrudTest {
             LOGGER.info("Author {} books were queried", author.getName());
             LOGGER.info("Author {} has {} books", author.getName(), author.getBooks().size());
         }
+    }
+
+    /**
+     * The owning side of a relation is the one which defines the @JoinTable or @JoinColumn (the
+     * holder of the foreign key). For a relation 1:n and n:n to be saved, we must add
+     * to the owning side the other object, as the relation is updated only trough the owning side.
+     * In the case we do not update the owning side, the owned side can persist the owner, but it will not
+     * create a relation between them. Valid in 1:n and n:n.
+     */
+    @Test
+    @Commit
+    public void relationsAreSavedOnlyFromOwningSide() {
+        Teacher teacher = new Teacher();
+        teacher.setName("New Teacher");
+        teacher.setCourses(new HashSet<>());
+
+        Course course = new Course();
+        course.setName("New Course");
+        course.setTeachers(new HashSet<>());
+
+        course.getTeachers().add(teacher);
+
+        // This is needed for the relation to be saved in the many to many table. If not, both objects are persisted
+        // without the relation between them.
+        teacher.getCourses().add(course);
+
+        courseRepository.saveAndFlush(course);
     }
 
 }
