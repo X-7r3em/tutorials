@@ -54,9 +54,6 @@ public class RemoveServiceTest {
         mockServer.verify();
     }
 
-    /**
-     * Example for mocking a remote http server for a REST POST call.
-     */
     @Test
     public void postEchoMessage_givenMessage_willReturnEchoMessage() throws JsonProcessingException {
         MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
@@ -68,11 +65,46 @@ public class RemoveServiceTest {
                 .andExpect(content().string(mapper.writeValueAsString(new Echo("Test Message"))))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(mapper.writeValueAsString(new Echo("Echo Test Message")))
-                );
+                        .body(mapper.writeValueAsString(new Echo("Echo Test Message"))));
 
         String message = remoteService.postEchoMessage("Test Message");
         assertEquals("Echo Test Message", message);
+        mockServer.verify();
+    }
+    
+    /**
+     * Example for expecting a request that is not made or making a request that is not expected will fail the verify.
+     * If the expected routes are called in the same order, the mockServer will be valid.
+     * If the expected routes are not called in the same order, the mockServer will not be valid.
+     * If there is a call on a unexpected route, then the mockServer will not be valid.
+     * If there is no call on an expected route, then the mockServer will not be valid.
+     *
+     * This can be tested by commenting the mock or the act part.
+     */
+    @Test
+    public void multipleCallsToDifferentRoutes() throws JsonProcessingException {
+        MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
+        mockServer.expect(ExpectedCount.once(),
+                requestTo("/echo/?message=Test"))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body("Echo Test"));
+
+        mockServer.expect(ExpectedCount.once(),
+                requestTo("/echo/"))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(header("test", "This is a test header"))
+                .andExpect(content().string(mapper.writeValueAsString(new Echo("Test Message"))))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(new Echo("Echo Test Message"))));
+
+        String getMessage = remoteService.getEchoMessage("Test");
+        String postEchoMessage = remoteService.postEchoMessage("Test Message");
+        assertEquals("Echo Test", getMessage);
+        assertEquals("Echo Test Message", postEchoMessage);
         mockServer.verify();
     }
 }
