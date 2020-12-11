@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: 1.8.0_251 (Oracle Corporation)
+Main-Class: app.App
+Class-Path: NonExecutable.jar
+

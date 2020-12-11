@@ -1,0 +1,62 @@
+Run a simple Hello World
+1. To compile a simple java program:
+javac -d MyFolder Path/MainPackage/MainClass.java Path/MainPackage/OtherClass.java Path/MainPackage/ThirdClass.java
+
+-d MyFolder is where the newly compiled classes will be put
+Path is the path to the folder
+We give a list of all the classes needed for the compilation.
+
+2. To run the program:
+java -cp "MyFolder" MainPackage.MainClass
+
+The classpath is where our classes are found. The classpath or cp can be ommited if we are in the root folder of the program.
+
+To create our own jar JDK8
+1. Compile classes that will be included in the jar
+2. Create jars
+jar cf App.jar .
+
+- App.jar - name for jar
+-c specifies to create a jar
+-f specify the jar name
+- . - folder containing files to be added to the jar
+
+jar cfe App.jar app.App .
+-e adds entrypoint to Manifest
+
+jar cf src/jars/dto.jar -C out/dto .
+
+src/jars is the folder in which the new dto.jar will be
+-C out/dto . moves files from out/dto to the root of the jar
+. indicates that we will place what we selected in the root of the jar
+
+Note: If we want to create a jar with a manifest:
+jar cfm Hello.jar Manifest.txt Hello.class Other.class
+
+Hello.jar gives the names of the jar
+Manifest.txt is out manifest. It should contain Main-Class: EntryPointClass
+Hello.class and Other.class are the ones included in the jar
+
+To run a program with our classes, our jars and external jars JDK8
+1. The program must be compiled and it must know where all the needed classes are
+javac -d out -cp "src;src/jars/dto.jar;src/jars/dto.jar;src/jars/modelmapper-2.3.2.jar" src/app/Main.java
+javac -d out -cp "src;src/jars/*" src/app/Main.java
+javac -d target -cp NonExecutable.jar src/app/App.java
+
+- src/app/Main.java shows where to start the program from
+-cp "src;src/jars/dto.jar;src/jars/dto.jar;src/jars/modelmapper-2.3.2.jar" lists all the needed classes separated with ;
+-- src is for the root, and the others are all the jars
+
+2. We run the program
+java -cp "out;src/jars/dto.jar;src/jars/dto.jar;src/jars/modelmapper-2.3.2.jar" app.App
+java -cp "out;src/jars/*" app.App
+
+-cp location of the compiled classes and jars
+- app.App - starting point of the program
+
+3. If the program is in a jar
+java -jar App.jar
+
+Бележки:
+jar Може с main (entrypoint) метод или без
+всички публични класове и техните членове в jar се виждат от всички останали
