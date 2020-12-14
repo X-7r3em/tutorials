@@ -1,0 +1,30 @@
+docker run <image[:tag]> - run docker image
+docker run -d <container_name> - runs in background and detaches terminal
+docker run -i <image> - runs the docker in interactive mode with the STDIN attached to the dockers
+docker run -t <image> - runs the docker and attaches the terminal to the dockers
+docker run -it <image> - runs the docker attached to the terminal and STIN
+docker run -p <host port>:<container port> <image> - runs the container with the specific port details. The container with 
+local <container port> will be available on <host port> The container has a local IP address. 
+docker run -v hostFolder:containerFolder <image> - maps the container folder to the folder in the host to prevent dataloss
+docker run -e EV=name <image> - run a container with environment variable EV with value name
+docker run <container> <command> - command overrides the CMD in the file
+
+docker stop <container> 
+
+docker ps [-a] - lists containers
+docker inspect <container> - detailed information about container
+docker logs <container> - shows the terminal logs of the container
+
+docker rm <container_name> - removes a container from Docker
+docker images
+docker rmi - removes images
+docker exec <container_name> -> run the command on a running docker
+
+docker attach <container_name/container_id>
+docker version
+
+docker build -t <container:tag> <location of files> - builds an image with a tag
+
+docker history <container> - shows the steps for building the image
+
+docker volume create data_volume - creates a persisten volume in docker, for example to store data of a MySQL container after the container is stopped
