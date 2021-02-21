@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\bin\Debug\netcoreapp3.1\AdvancedIfElseExample.exe
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\bin\Debug\netcoreapp3.1\AdvancedIfElseExample.deps.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\bin\Debug\netcoreapp3.1\AdvancedIfElseExample.runtimeconfig.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\bin\Debug\netcoreapp3.1\AdvancedIfElseExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\bin\Debug\netcoreapp3.1\AdvancedIfElseExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\bin\Debug\netcoreapp3.1\AdvancedIfElseExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\obj\Debug\netcoreapp3.1\AdvancedIfElseExample.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\obj\Debug\netcoreapp3.1\AdvancedIfElseExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\obj\Debug\netcoreapp3.1\AdvancedIfElseExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\obj\Debug\netcoreapp3.1\AdvancedIfElseExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\obj\Debug\netcoreapp3.1\AdvancedIfElseExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\obj\Debug\netcoreapp3.1\AdvancedIfElseExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\AdvancedIfElse\obj\Debug\netcoreapp3.1\AdvancedIfElseExample.genruntimeconfig.cache

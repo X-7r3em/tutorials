@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.exe
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.deps.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.runtimeconfig.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ConsoleReadAndWriteExample.genruntimeconfig.cache

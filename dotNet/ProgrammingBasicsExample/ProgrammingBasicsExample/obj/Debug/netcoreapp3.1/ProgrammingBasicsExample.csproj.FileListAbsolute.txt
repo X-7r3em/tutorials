@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ProgrammingBasicsExample.exe
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ProgrammingBasicsExample.deps.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ProgrammingBasicsExample.runtimeconfig.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ProgrammingBasicsExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ProgrammingBasicsExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\bin\Debug\netcoreapp3.1\ProgrammingBasicsExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ProgrammingBasicsExample.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ProgrammingBasicsExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ProgrammingBasicsExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ProgrammingBasicsExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ProgrammingBasicsExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ProgrammingBasicsExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ProgrammingBasicsExample\obj\Debug\netcoreapp3.1\ProgrammingBasicsExample.genruntimeconfig.cache

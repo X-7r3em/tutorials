@@ -1,0 +1,12 @@
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\bin\Debug\netcoreapp3.1\IfElseExample.exe
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\bin\Debug\netcoreapp3.1\IfElseExample.deps.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\bin\Debug\netcoreapp3.1\IfElseExample.runtimeconfig.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\bin\Debug\netcoreapp3.1\IfElseExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\bin\Debug\netcoreapp3.1\IfElseExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\bin\Debug\netcoreapp3.1\IfElseExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\obj\Debug\netcoreapp3.1\IfElseExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\obj\Debug\netcoreapp3.1\IfElseExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\obj\Debug\netcoreapp3.1\IfElseExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\obj\Debug\netcoreapp3.1\IfElseExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\obj\Debug\netcoreapp3.1\IfElseExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\IfElseExample\obj\Debug\netcoreapp3.1\IfElseExample.genruntimeconfig.cache

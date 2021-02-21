@@ -1,0 +1,12 @@
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\bin\Debug\netcoreapp3.1\WhileLoopExample.exe
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\bin\Debug\netcoreapp3.1\WhileLoopExample.deps.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\bin\Debug\netcoreapp3.1\WhileLoopExample.runtimeconfig.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\bin\Debug\netcoreapp3.1\WhileLoopExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\bin\Debug\netcoreapp3.1\WhileLoopExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\bin\Debug\netcoreapp3.1\WhileLoopExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\obj\Debug\netcoreapp3.1\WhileLoopExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\obj\Debug\netcoreapp3.1\WhileLoopExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\obj\Debug\netcoreapp3.1\WhileLoopExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\obj\Debug\netcoreapp3.1\WhileLoopExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\obj\Debug\netcoreapp3.1\WhileLoopExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\WhileLoopExample\obj\Debug\netcoreapp3.1\WhileLoopExample.genruntimeconfig.cache

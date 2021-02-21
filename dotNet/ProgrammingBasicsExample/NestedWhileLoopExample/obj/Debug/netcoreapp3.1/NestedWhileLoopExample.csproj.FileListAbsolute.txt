@@ -1,0 +1,12 @@
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\bin\Debug\netcoreapp3.1\NestedWhileLoopExample.exe
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\bin\Debug\netcoreapp3.1\NestedWhileLoopExample.deps.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\bin\Debug\netcoreapp3.1\NestedWhileLoopExample.runtimeconfig.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\bin\Debug\netcoreapp3.1\NestedWhileLoopExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\bin\Debug\netcoreapp3.1\NestedWhileLoopExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\bin\Debug\netcoreapp3.1\NestedWhileLoopExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\obj\Debug\netcoreapp3.1\NestedWhileLoopExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\obj\Debug\netcoreapp3.1\NestedWhileLoopExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\obj\Debug\netcoreapp3.1\NestedWhileLoopExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\obj\Debug\netcoreapp3.1\NestedWhileLoopExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\obj\Debug\netcoreapp3.1\NestedWhileLoopExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\NestedWhileLoopExample\obj\Debug\netcoreapp3.1\NestedWhileLoopExample.genruntimeconfig.cache

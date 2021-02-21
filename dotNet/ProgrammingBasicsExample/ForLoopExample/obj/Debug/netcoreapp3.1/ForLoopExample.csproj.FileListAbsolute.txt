@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\bin\Debug\netcoreapp3.1\ForLoopExample.exe
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\bin\Debug\netcoreapp3.1\ForLoopExample.deps.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\bin\Debug\netcoreapp3.1\ForLoopExample.runtimeconfig.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\bin\Debug\netcoreapp3.1\ForLoopExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\bin\Debug\netcoreapp3.1\ForLoopExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\bin\Debug\netcoreapp3.1\ForLoopExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\obj\Debug\netcoreapp3.1\ForLoopExample.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\obj\Debug\netcoreapp3.1\ForLoopExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\obj\Debug\netcoreapp3.1\ForLoopExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\obj\Debug\netcoreapp3.1\ForLoopExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\obj\Debug\netcoreapp3.1\ForLoopExample.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\obj\Debug\netcoreapp3.1\ForLoopExample.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\ForLoopExample\obj\Debug\netcoreapp3.1\ForLoopExample.genruntimeconfig.cache
