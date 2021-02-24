@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\TechModuleExample.exe
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\TechModuleExample.deps.json
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\TechModuleExample.runtimeconfig.json
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\TechModuleExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\TechModuleExample.dll
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\TechModuleExample.pdb
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\TechModuleExample.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\TechModuleExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\TechModuleExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\TechModuleExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\TechModuleExample.dll
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\TechModuleExample.pdb
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\TechModuleExample.genruntimeconfig.cache

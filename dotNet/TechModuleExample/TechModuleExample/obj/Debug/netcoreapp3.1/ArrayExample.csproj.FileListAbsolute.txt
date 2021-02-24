@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\ArrayExample.exe
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\ArrayExample.deps.json
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\ArrayExample.runtimeconfig.json
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\ArrayExample.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\ArrayExample.dll
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\bin\Debug\netcoreapp3.1\ArrayExample.pdb
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\ArrayExample.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\ArrayExample.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\ArrayExample.AssemblyInfo.cs
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\ArrayExample.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\ArrayExample.dll
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\ArrayExample.pdb
+D:\Code\Examples\dotNet\TechModuleExample\TechModuleExample\obj\Debug\netcoreapp3.1\ArrayExample.genruntimeconfig.cache

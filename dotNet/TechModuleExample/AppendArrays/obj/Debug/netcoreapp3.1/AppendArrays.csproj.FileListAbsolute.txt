@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\bin\Debug\netcoreapp3.1\AppendArrays.exe
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\bin\Debug\netcoreapp3.1\AppendArrays.deps.json
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\bin\Debug\netcoreapp3.1\AppendArrays.runtimeconfig.json
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\bin\Debug\netcoreapp3.1\AppendArrays.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\bin\Debug\netcoreapp3.1\AppendArrays.dll
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\bin\Debug\netcoreapp3.1\AppendArrays.pdb
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\obj\Debug\netcoreapp3.1\AppendArrays.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\obj\Debug\netcoreapp3.1\AppendArrays.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\obj\Debug\netcoreapp3.1\AppendArrays.AssemblyInfo.cs
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\obj\Debug\netcoreapp3.1\AppendArrays.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\obj\Debug\netcoreapp3.1\AppendArrays.dll
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\obj\Debug\netcoreapp3.1\AppendArrays.pdb
+D:\Code\Examples\dotNet\TechModuleExample\AppendArrays\obj\Debug\netcoreapp3.1\AppendArrays.genruntimeconfig.cache

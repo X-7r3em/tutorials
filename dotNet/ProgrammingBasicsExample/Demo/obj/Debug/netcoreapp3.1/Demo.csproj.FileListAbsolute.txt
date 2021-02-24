@@ -1,0 +1,12 @@
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\bin\Debug\netcoreapp3.1\Demo.exe
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\bin\Debug\netcoreapp3.1\Demo.deps.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\bin\Debug\netcoreapp3.1\Demo.runtimeconfig.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\bin\Debug\netcoreapp3.1\Demo.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\bin\Debug\netcoreapp3.1\Demo.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\bin\Debug\netcoreapp3.1\Demo.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\obj\Debug\netcoreapp3.1\Demo.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\obj\Debug\netcoreapp3.1\Demo.AssemblyInfo.cs
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\obj\Debug\netcoreapp3.1\Demo.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\obj\Debug\netcoreapp3.1\Demo.dll
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\obj\Debug\netcoreapp3.1\Demo.pdb
+D:\Code\Examples\dotNet\ProgrammingBasicsExample\Demo\obj\Debug\netcoreapp3.1\Demo.genruntimeconfig.cache
