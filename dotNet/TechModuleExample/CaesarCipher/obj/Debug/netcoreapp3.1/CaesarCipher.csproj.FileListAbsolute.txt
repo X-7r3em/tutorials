@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\bin\Debug\netcoreapp3.1\CaesarCipher.exe
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\bin\Debug\netcoreapp3.1\CaesarCipher.deps.json
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\bin\Debug\netcoreapp3.1\CaesarCipher.runtimeconfig.json
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\bin\Debug\netcoreapp3.1\CaesarCipher.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\bin\Debug\netcoreapp3.1\CaesarCipher.dll
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\bin\Debug\netcoreapp3.1\CaesarCipher.pdb
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\obj\Debug\netcoreapp3.1\CaesarCipher.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\obj\Debug\netcoreapp3.1\CaesarCipher.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\obj\Debug\netcoreapp3.1\CaesarCipher.AssemblyInfo.cs
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\obj\Debug\netcoreapp3.1\CaesarCipher.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\obj\Debug\netcoreapp3.1\CaesarCipher.dll
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\obj\Debug\netcoreapp3.1\CaesarCipher.pdb
+D:\Code\Examples\dotNet\TechModuleExample\CaesarCipher\obj\Debug\netcoreapp3.1\CaesarCipher.genruntimeconfig.cache

@@ -1,0 +1,13 @@
+D:\Code\Examples\dotNet\TechModuleExample\Articles\bin\Debug\netcoreapp3.1\Articles.exe
+D:\Code\Examples\dotNet\TechModuleExample\Articles\bin\Debug\netcoreapp3.1\Articles.deps.json
+D:\Code\Examples\dotNet\TechModuleExample\Articles\bin\Debug\netcoreapp3.1\Articles.runtimeconfig.json
+D:\Code\Examples\dotNet\TechModuleExample\Articles\bin\Debug\netcoreapp3.1\Articles.runtimeconfig.dev.json
+D:\Code\Examples\dotNet\TechModuleExample\Articles\bin\Debug\netcoreapp3.1\Articles.dll
+D:\Code\Examples\dotNet\TechModuleExample\Articles\bin\Debug\netcoreapp3.1\Articles.pdb
+D:\Code\Examples\dotNet\TechModuleExample\Articles\obj\Debug\netcoreapp3.1\Articles.csprojAssemblyReference.cache
+D:\Code\Examples\dotNet\TechModuleExample\Articles\obj\Debug\netcoreapp3.1\Articles.AssemblyInfoInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\Articles\obj\Debug\netcoreapp3.1\Articles.AssemblyInfo.cs
+D:\Code\Examples\dotNet\TechModuleExample\Articles\obj\Debug\netcoreapp3.1\Articles.csproj.CoreCompileInputs.cache
+D:\Code\Examples\dotNet\TechModuleExample\Articles\obj\Debug\netcoreapp3.1\Articles.dll
+D:\Code\Examples\dotNet\TechModuleExample\Articles\obj\Debug\netcoreapp3.1\Articles.pdb
+D:\Code\Examples\dotNet\TechModuleExample\Articles\obj\Debug\netcoreapp3.1\Articles.genruntimeconfig.cache

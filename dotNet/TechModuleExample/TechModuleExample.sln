@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrayExample", "TechModuleExample\ArrayExample.csproj", "{F7E5EC94-2A24-4E61-8E5B-12146BD67CA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppendArrays", "AppendArrays\AppendArrays.csproj", "{B8D92A70-398C-4D1E-8B5C-93A29AC318C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppendArrays", "AppendArrays\AppendArrays.csproj", "{B8D92A70-398C-4D1E-8B5C-93A29AC318C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orders", "Orders\Orders.csproj", "{719054CF-AD26-4733-B912-88E13A7920CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Articles", "Articles\Articles.csproj", "{8FD051E4-40E3-4193-BEE4-235BE218B402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaesarCipher", "CaesarCipher\CaesarCipher.csproj", "{385D0984-BB40-427E-A0A0-3DE8044C1D26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{B8D92A70-398C-4D1E-8B5C-93A29AC318C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8D92A70-398C-4D1E-8B5C-93A29AC318C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8D92A70-398C-4D1E-8B5C-93A29AC318C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{719054CF-AD26-4733-B912-88E13A7920CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{719054CF-AD26-4733-B912-88E13A7920CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{719054CF-AD26-4733-B912-88E13A7920CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{719054CF-AD26-4733-B912-88E13A7920CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD051E4-40E3-4193-BEE4-235BE218B402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD051E4-40E3-4193-BEE4-235BE218B402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD051E4-40E3-4193-BEE4-235BE218B402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD051E4-40E3-4193-BEE4-235BE218B402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385D0984-BB40-427E-A0A0-3DE8044C1D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385D0984-BB40-427E-A0A0-3DE8044C1D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385D0984-BB40-427E-A0A0-3DE8044C1D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385D0984-BB40-427E-A0A0-3DE8044C1D26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
